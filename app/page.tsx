@@ -22,40 +22,44 @@ const Footer = dynamic(() => import('@/components/Footer'), {
   ssr: false,
 });
 
-const HeroSection = dynamic(() => import('@/components/HomePage/HeroSection'), {
-  loading: () => <div className="min-h-screen flex items-center justify-center">Loading hero section...</div>,
-  ssr: false,
-});
-
-const WorkflowSection = dynamic(() => import('@/components/HomePage/WorkflowSection'), {
-  loading: () => <div className="min-h-screen flex items-center justify-center">Loading workflow section...</div>,
-  ssr: false,
-});
-
-const TechStack = dynamic(() => import('@/components/HomePage/TechStack'), {
-  loading: () => <div className="min-h-screen flex items-center justify-center">Loading tech stack...</div>,
-  ssr: false,
-});
-
-const BlogList = dynamic(() => import('@/components/HomePage/BlogList'), {
-  loading: () => <div className="min-h-screen flex items-center justify-center">Loading blog posts...</div>,
-  ssr: false,
-});
-
-const PortfolioLinks = dynamic(() => import('@/components/HomePage/PortfolioLinks'), {
-  loading: () => <div className="min-h-screen flex items-center justify-center">Loading portfolio...</div>,
-  ssr: false,
-});
-
-const IDEContactForm = dynamic(() => import('@/components/HomePage/IdeContactForm'), {
-  loading: () => <div className="w-full h-96 flex items-center justify-center">Loading contact form...</div>,
-  ssr: false,
-});
-
-const NewsletterCard = dynamic(() => import('@/components/NewsletterCard'), {
-  loading: () => null,
-  ssr: false,
-});
+const {
+  DynamicHeroSection,
+  DynamicPortfolioLinks,
+  DynamicWorkflowSection,
+  DynamicIdeContactForm,
+  DynamicNewsletterCard,
+  DynamicTechStack,
+  DynamicBlogList
+} = {
+  DynamicHeroSection: dynamic(() => import('@/components/HomePage/HeroSection'), {
+    loading: () => <div className="min-h-screen flex items-center justify-center">Loading hero section...</div>,
+    ssr: false,
+  }),
+  DynamicPortfolioLinks: dynamic(() => import('@/components/HomePage/PortfolioLinks'), {
+    loading: () => <div className="min-h-screen flex items-center justify-center">Loading portfolio...</div>,
+    ssr: false,
+  }),
+  DynamicWorkflowSection: dynamic(() => import('@/components/HomePage/WorkflowSection'), {
+    loading: () => <div className="min-h-screen flex items-center justify-center">Loading workflow section...</div>,
+    ssr: false,
+  }),
+  DynamicIdeContactForm: dynamic(() => import('@/components/HomePage/IdeContactForm'), {
+    loading: () => <div className="w-full h-96 flex items-center justify-center">Loading contact form...</div>,
+    ssr: false,
+  }),
+  DynamicNewsletterCard: dynamic(() => import('@/components/NewsletterCard'), {
+    loading: () => null,
+    ssr: false,
+  }),
+  DynamicTechStack: dynamic(() => import('@/components/HomePage/TechStack'), {
+    loading: () => <div className="min-h-screen flex items-center justify-center">Loading tech stack...</div>,
+    ssr: false,
+  }),
+  DynamicBlogList: dynamic(() => import('@/components/HomePage/BlogList'), {
+    loading: () => <div className="min-h-screen flex items-center justify-center">Loading blog posts...</div>,
+    ssr: false,
+  }),
+};
 
 export default function HomePage(): JSX.Element {
   return (
@@ -140,8 +144,8 @@ export default function HomePage(): JSX.Element {
               <Suspense fallback={<div className="w-[250px] h-[80px]" />}>
                 <Logo className="w-[250px] h-auto mb-4 hover:scale-105 transition-transform duration-300" />
               </Suspense>
-              <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading hero section...</div>}>
-                <HeroSection />
+              <Suspense fallback={<div>Loading...</div>}>
+                <DynamicHeroSection />
               </Suspense>
             </div>
           </section>
@@ -150,8 +154,8 @@ export default function HomePage(): JSX.Element {
           <section id="workflow" className="min-h-screen transition-all duration-500 ease-out">
             <div className="container mx-auto px-4">
               <div className="transform hover:scale-[1.01] transition-all duration-300 ease-in-out">
-                <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading workflow section...</div>}>
-                  <WorkflowSection />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <DynamicWorkflowSection />
                 </Suspense>
               </div>
             </div>
@@ -161,8 +165,8 @@ export default function HomePage(): JSX.Element {
           <section id="tech" className="relative z-30 min-h-screen py-20 flex items-center justify-center transition-all duration-500 ease-out">
             <div className="container mx-auto px-4">
               <div className="transform hover:scale-[1.01] transition-all duration-300 ease-in-out">
-                <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading tech stack...</div>}>
-                  <TechStack />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <DynamicTechStack />
                 </Suspense>
               </div>
             </div>
@@ -172,8 +176,8 @@ export default function HomePage(): JSX.Element {
           <section id="blog" className="min-h-screen transition-all duration-500 ease-out">
             <div className="container mx-auto px-4">
               <div className="transform hover:scale-[1.01] transition-all duration-300 ease-in-out">
-                <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading blog posts...</div>}>
-                  <BlogList />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <DynamicBlogList />
                 </Suspense>
               </div>
             </div>
@@ -183,8 +187,8 @@ export default function HomePage(): JSX.Element {
           <section id="portfolio" className="min-h-screen transition-all duration-500 ease-out">
             <div className="container mx-auto px-4">
               <div className="transform hover:scale-[1.01] transition-all duration-300 ease-in-out">
-                <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading portfolio...</div>}>
-                  <PortfolioLinks />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <DynamicPortfolioLinks />
                 </Suspense>
               </div>
             </div>
@@ -194,8 +198,8 @@ export default function HomePage(): JSX.Element {
           <section id="contact" className="min-h-screen transition-all duration-500 ease-out">
             <div className="container mx-auto px-4">
               <div className="transform hover:scale-[1.01] transition-all duration-300 ease-in-out">
-                <Suspense fallback={<div className="w-full h-96 flex items-center justify-center">Loading contact form...</div>}>
-                  <IDEContactForm />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <DynamicIdeContactForm />
                 </Suspense>
               </div>
             </div>
@@ -207,7 +211,7 @@ export default function HomePage(): JSX.Element {
         <FloatingChatButtons />
       </Suspense>
       <Suspense fallback={null}>
-        <NewsletterCard />
+        <DynamicNewsletterCard />
       </Suspense>
       <Suspense fallback={<div className="h-16" />}>
         <Footer />
