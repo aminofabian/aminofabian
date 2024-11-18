@@ -67,7 +67,7 @@ const NewsletterCard = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="your@email.com"
                         required
-                        className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all"
+                        className="w-full px-4 py-2 bg-white/5 border border-emerald-600/10 rounded-lg text-emerald-700 placeholder-gray-400 text-xm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all"
                       />
                     </div>
                     <button
