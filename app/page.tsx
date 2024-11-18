@@ -52,6 +52,11 @@ const IDEContactForm = dynamic(() => import('@/components/HomePage/IdeContactFor
   ssr: false,
 });
 
+const NewsletterCard = dynamic(() => import('@/components/NewsletterCard'), {
+  loading: () => null,
+  ssr: false,
+});
+
 export default function HomePage(): JSX.Element {
   return (
     <main className="relative min-h-screen w-full overflow-x-hidden">
@@ -198,6 +203,12 @@ export default function HomePage(): JSX.Element {
         </div>
       </div>
 
+      <Suspense fallback={null}>
+        <FloatingChatButtons />
+      </Suspense>
+      <Suspense fallback={null}>
+        <NewsletterCard />
+      </Suspense>
       <Suspense fallback={<div className="h-16" />}>
         <Footer />
       </Suspense>
