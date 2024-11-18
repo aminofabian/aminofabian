@@ -2,6 +2,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+const TerserPlugin = require('terser-webpack-plugin');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -68,7 +70,10 @@ const nextConfig = {
       };
 
       // Add Terser options for better minification
-      config.optimization.minimizer = config.optimization.minimizer || [];
+      if (!config.optimization.minimizer) {
+        config.optimization.minimizer = [];
+      }
+      
       config.optimization.minimizer.push(
         new TerserPlugin({
           terserOptions: {
