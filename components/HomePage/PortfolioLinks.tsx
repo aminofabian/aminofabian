@@ -53,39 +53,39 @@ const portfolioSites: PortfolioSite[] = [
     category: "webapp"
   },
   {
-    name: "6. Duka Connect",
-    url: "https://dukaconnect.co.ke",
-    description: "E-commerce platform connecting local shops with customers",
-    tech: ["Next.js", "Node.js", "MongoDB"],
-    category: "webapp"
-  },
-  {
-    name: "7. Safiri Car Hire",
-    url: "https://safiricarshire.com",
-    description: "Car rental and booking platform for Kenya",
+    name: "6. Eppico Interiors",
+    url: "https://go.eppicointeriors.co.ke/",
+    description: "Premium interior design and home decor e-commerce platform",
     tech: ["WordPress", "WooCommerce", "Custom Theme"],
     category: "wordpress"
   },
   {
-    name: "8. Nairobi Dev School",
-    url: "https://nairobidevschool.com",
-    description: "Coding bootcamp and tech education platform",
-    tech: ["Next.js", "Strapi", "PostgreSQL"],
+    name: "7. Fitrii",
+    url: "https://fitrii.com/",
+    description: "Fitness and wellness platform for personalized training",
+    tech: ["Next.js", "Node.js", "MongoDB"],
     category: "webapp"
   },
   {
-    name: "9. Afya Connect",
-    url: "https://afyaconnect.co.ke",
-    description: "Healthcare provider directory and appointment booking system",
-    tech: ["React", "Firebase", "Cloud Functions"],
-    category: "webapp"
+    name: "8. Emerald Dental",
+    url: "https://emeralddental.co.ke/",
+    description: "Modern dental practice website with appointment booking",
+    tech: ["WordPress", "Custom Theme", "Booking System"],
+    category: "wordpress"
   },
   {
-    name: "10. Tech Tribe",
-    url: "https://techtribe.africa",
-    description: "Community platform for African tech professionals",
-    tech: ["Next.js", "Supabase", "Tailwind CSS"],
-    category: "webapp"
+    name: "9. Mavuno Church",
+    url: "https://mavunochurch.org/",
+    description: "Church website with event management and online resources",
+    tech: ["WordPress", "Custom Theme", "Events Calendar"],
+    category: "wordpress"
+  },
+  {
+    name: "10. Media Masses",
+    url: "https://mediamasses.com/",
+    description: "Digital media and content creation platform",
+    tech: ["Next", "Node", "S3 B2 Bucket"],
+    category: "wordpress"
   }
 ];
 
