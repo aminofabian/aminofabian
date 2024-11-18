@@ -268,7 +268,7 @@ const IDEContactForm = () => {
                     {/* Triangle for speech bubble */}
                     <div className="absolute left-[-8px] top-4 w-4 h-4 bg-white transform rotate-45" />
                     <p className="font-['Caveat'] text-lg text-emerald-800 relative z-10">
-                      Hey there! Can you solve this for me? {captchaProblem.question} = ?
+                      Hey there! Can you solve this for me? <span className="font-['Georgia'] ml-3 bg-emerald-50 px-2 text-xs"> {captchaProblem.question} = ? </span> 
                       <br />
                       <span className="text-sm text-emerald-600 italic">
                         (Or just WhatsApp if math isn&apos;t your thing 😉)
