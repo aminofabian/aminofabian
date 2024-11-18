@@ -49,7 +49,7 @@ const NewsletterCard = () => {
             <div className="absolute inset-0 bg-white/10 backdrop-blur-xl rounded-2xl" />
             
             {/* Main content */}
-            <div className="relative bg-gradient-to-br from-white/5 to-white/10 border border-white/20 p-6 rounded-2xl shadow-xl w-80">
+            <div className="relative bg-gradient-to-br from-white/5 to-white/10 border border-white/20 p-6 rounded-2xl shadow-xl w-80 cursor-pointer">
               {/* Close button */}
               <button
                 onClick={handleClose}
