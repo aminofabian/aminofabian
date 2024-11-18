@@ -260,7 +260,7 @@ const WorkflowSection = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <h3 className="text-2xl font-semibold text-gray-900 mb-4">Ready to Start Your Project?</h3>
-          <p className="text-gray-600 mb-6">Let's work together to bring your vision to life</p>
+          <p className="text-gray-600 mb-6">Here&apos;s how I bring your ideas to life</p>
           <a 
             href="#contact" 
             className="inline-flex items-center px-6 py-3 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"

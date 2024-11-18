@@ -1,7 +1,8 @@
 'use client'
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Star, GitFork, Clock, Users } from 'lucide-react';
+import { Github, Star, GitFork, Clock, Users } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -74,7 +75,6 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   
   return (
@@ -95,10 +95,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             {/* Project Image */}
             <div className="lg:col-span-1">
               <div className="relative h-24 w-24 rounded-lg overflow-hidden border border-slate-200 shadow-sm">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="object-cover w-full h-full"
+                  width={400}
+                  height={300}
+                  className="w-full h-auto rounded-lg"
                 />
               </div>
             </div>
@@ -166,21 +168,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               </div>
 
               {/* Highlights */}
-              {isExpanded && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  className="space-y-2"
-                >
-                  <h4 className="font-semibold text-slate-800">Highlights</h4>
-                  <ul className="list-disc list-inside space-y-1 text-slate-600">
-                    {project.highlights.map((highlight: string, index: number) => (
-                      <li key={index}>{highlight}</li>
-                    ))}
-                  </ul>
-                </motion.div>
-              )}
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="space-y-2"
+              >
+                <h4 className="font-semibold text-slate-800">Highlights</h4>
+                <ul className="list-disc list-inside space-y-1 text-slate-600">
+                  {project.highlights.map((highlight: string, index: number) => (
+                    <li key={index}>{highlight}</li>
+                  ))}
+                </ul>
+              </motion.div>
             </div>
           </div>
         </CardContent>
@@ -190,6 +190,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 };
 
 const ProjectShowcase: React.FC = () => {
+  const [isExpanded] = useState(false);
   return (
     <div className="w-full space-y-6">
       {projects.map((project) => (

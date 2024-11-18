@@ -133,7 +133,8 @@ const PortfolioLinks = () => {
 
   const totalPages = Math.ceil(filteredSites.length / projectsPerPage);
   const startIndex = (currentPage - 1) * projectsPerPage;
-  const visibleProjects = filteredSites.slice(startIndex, startIndex + projectsPerPage);
+  const endIndex = startIndex + projectsPerPage;
+  const visibleProjects = filteredSites.slice(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -161,6 +162,10 @@ const PortfolioLinks = () => {
     return buttons;
   };
 
+  const num1 = currentPage === 1 ? totalPages : currentPage - 1;
+  const num2 = currentPage;
+  const num3 = currentPage === totalPages ? 1 : currentPage + 1;
+
   return (
     <section ref={ref} className="py-20">
       <div className="max-w-7xl mx-auto px-4">
@@ -171,7 +176,7 @@ const PortfolioLinks = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
-          <p className="text-lg text-gray-600">A selection of my recent work</p>
+          <p className="text-lg text-gray-600">Let&apos;s explore some of my recent projects</p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -422,6 +427,7 @@ const PortfolioLinks = () => {
                 <FiChevronRight className="w-4 h-4" />
               </button>
             </div>
+            <div className="text-sm">Don&apos;t see what you&apos;re looking for?</div>
           </div>
         </div>
       </div>

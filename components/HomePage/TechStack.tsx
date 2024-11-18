@@ -3,12 +3,26 @@
 import React from 'react';
 import { IconType } from 'react-icons';
 import { 
-  SiTypescript, SiJavascript, SiReact, SiNextdotjs, SiTailwindcss, 
-  SiNodedotjs, SiExpress, SiNestjs, SiPrisma, SiPostgresql, 
-  SiMongodb, SiRedis, SiDocker, SiKubernetes,
-  SiGithubactions, SiJenkins,
-  SiAmazonwebservices, SiSvelte, SiGo,
-  SiMysql, SiSqlite
+  SiTypescript, 
+  SiReact, 
+  SiNextdotjs, 
+  SiTailwindcss, 
+  SiNodedotjs, 
+  SiExpress, 
+  SiNestjs, 
+  SiPrisma, 
+  SiPostgresql, 
+  SiMongodb, 
+  SiRedis, 
+  SiDocker, 
+  SiKubernetes,
+  SiGithubactions, 
+  SiJenkins,
+  SiAmazonwebservices, 
+  SiSvelte, 
+  SiGo,
+  SiMysql, 
+  SiSqlite
 } from 'react-icons/si';
 
 interface TechSkill {

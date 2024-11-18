@@ -65,7 +65,7 @@ const SocialLinks: React.FC = () => {
         className="text-center mb-8"
       >
         <h2 className="text-3xl font-bold text-emerald-900 mb-3">Connect With Me</h2>
-        <p className="text-emerald-700 opacity-80">Let's build something amazing together</p>
+        <p className="text-emerald-700 opacity-80">Let&apos;s connect and create something amazing together!</p>
       </motion.div>
 
       <div className="flex flex-wrap justify-center gap-6">
