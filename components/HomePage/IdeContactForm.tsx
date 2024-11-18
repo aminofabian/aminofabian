@@ -129,13 +129,13 @@ const IDEContactForm = () => {
   };
 
   return (
-    <div ref={ref} className="relative z-30 w-full max-w-7xl mx-auto px-4 py-16">
+    <div ref={ref} className="relative z-30 flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-4 py-16">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="text-center mb-12"
+        className="text-center mb-12 w-full"
       >
         <h2 className="text-4xl font-bold text-emerald-900 mb-4">Get in Touch</h2>
         <p className="text-lg text-emerald-700 opacity-80">Have a project in mind? Let's discuss it!</p>
@@ -146,7 +146,7 @@ const IDEContactForm = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative max-w-2xl mx-auto"
+        className="relative w-full max-w-2xl"
       >
         {/* Form Background */}
         <div className="absolute -inset-[1px] bg-gradient-to-br from-emerald-100 to-emerald-50 rounded-2xl opacity-30" />
@@ -155,7 +155,7 @@ const IDEContactForm = () => {
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className="relative border border-emerald-100/30 bg-white/95 shadow-sm rounded-2xl p-8 md:p-10 space-y-6"
+          className="relative border border-emerald-100/30 bg-white/95 shadow-sm rounded-2xl p-8 md:p-10 space-y-6 w-full"
         >
           {/* Name Field */}
           <div className="relative group">

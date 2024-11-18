@@ -4,6 +4,7 @@ import { motion, useAnimation, AnimatePresence, useInView } from 'framer-motion'
 import { Briefcase, Terminal, ExternalLink, Code2, Sparkles, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import SocialLinks from './SocialLinks';
+import HireMeModal from './HireMeModal';
 import {
   SiTypescript, SiJavascript, SiReact, SiNextdotjs,
   SiTailwindcss, SiNodedotjs, SiPython, SiGit,
@@ -380,6 +381,7 @@ const FloatingChatButton = ({
 const HeroSection: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
+  const [isHireMeOpen, setIsHireMeOpen] = useState(false);
 
   return (
     <div ref={ref} className="min-h-screen relative overflow-visible">
@@ -461,10 +463,10 @@ const HeroSection: React.FC = () => {
                   transition={{ delay: 0.2, duration: 0.8 }}
                 >
                   <div className="flex flex-col space-y-4">
-                    <div className="flex gap-4 flex-wrap">
+                    <div className="flex flex-wrap justify-center gap-4">
                       <motion.a
                         href="/resume.pdf"
-                        className="inline-flex hidden items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-500 text-white rounded-lg font-medium shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:scale-105 transition-all duration-300"
+                        className="inline-flex hidden items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-500 text-white rounded-lg font-medium shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:scale-105 transition-all duration-300"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -472,27 +474,29 @@ const HeroSection: React.FC = () => {
                         View Resume
                       </motion.a>
                     
-                      <motion.a
-                        href="/hire-me"
-                        className="relative group inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-500 text-white rounded-lg font-medium shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:scale-105 transition-all duration-300"
+                      <motion.button
+                        onClick={() => setIsHireMeOpen(true)}
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-500 text-white rounded-lg font-medium shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:scale-105 transition-all duration-300"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
                         <Briefcase className="w-5 h-5" />
                         Hire Me
-                      </motion.a>
+                      </motion.button>
+
                       <motion.a
                         href="#contact"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg font-medium shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:scale-105 transition-all duration-300"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg font-medium shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:scale-105 transition-all duration-300"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
                         Get in Touch
                         <ArrowRight className="w-5 h-5" />
                       </motion.a>
+
                       <motion.a
                         href="#portfolio"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-800 rounded-lg font-medium border border-gray-200 hover:border-emerald-200 hover:shadow-lg hover:scale-105 transition-all duration-300"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-800 rounded-lg font-medium border border-gray-200 hover:border-emerald-200 hover:shadow-lg hover:scale-105 transition-all duration-300"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -578,6 +582,9 @@ const HeroSection: React.FC = () => {
           <CreativeCode />
         </div>
       </div>
+      
+      {/* Hire Me Modal */}
+      <HireMeModal isOpen={isHireMeOpen} onClose={() => setIsHireMeOpen(false)} />
     </div>
   );
 };
