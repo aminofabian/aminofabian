@@ -133,217 +133,213 @@ const IDEContactForm = ({ onClose }: IdeContactFormProps) => {
   };
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center bg-white/30 backdrop-blur-[2px] z-50" onClick={(e) => e.target === e.currentTarget && onClose?.()}>
-      <div className="w-full max-w-lg mx-auto p-4 transform -translate-y-10">
-        <div className="bg-white/95 rounded-2xl shadow-lg border border-emerald-100/30">
-          <div className="flex justify-between items-center p-6 border-b border-gray-100">
-            <h2 className="text-2xl font-semibold text-gray-800">Get in Touch</h2>
-            <button 
-              onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100/50 transition-all duration-200"
+    <div className="relative w-full">
+      <form
+        ref={formRef}
+        onSubmit={handleSubmit}
+        className="w-full max-w-lg mx-auto p-6 bg-white/95 shadow-lg rounded-2xl border border-emerald-100/30"
+      >
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-8 w-full"
+        >
+          <h2 className="text-3xl font-bold text-emerald-900 mb-3">Get in Touch</h2>
+          <p className="text-lg text-emerald-700 opacity-80">Have a project in mind? Let's discuss it!</p>
+        </motion.div>
+
+        {/* Name Field */}
+        <div className="relative group">
+          <label htmlFor="user_name" className="block text-sm font-medium text-gray-700 mb-2">
+            Name
+          </label>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <HiUser size={18} className="text-gray-400 group-focus-within:text-emerald-500 transition-colors duration-200" />
+            </div>
+            <input
+              type="text"
+              name="user_name"
+              id="user_name"
+              required
+              className="block w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg
+              text-gray-700 bg-white/80
+              focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/10 focus:outline-none
+              hover:border-gray-300 transition-all duration-200
+              placeholder:text-gray-400"
+              placeholder="Your name"
+            />
+          </div>
+        </div>
+
+        {/* Email Field */}
+        <div className="relative group">
+          <label htmlFor="user_email" className="block text-sm font-medium text-gray-700 mb-2">
+            Email
+          </label>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <HiMail size={18} className="text-gray-400 group-focus-within:text-emerald-500 transition-colors duration-200" />
+            </div>
+            <input
+              type="email"
+              name="user_email"
+              id="user_email"
+              required
+              className="block w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg
+              text-gray-700 bg-white/80
+              focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/10 focus:outline-none
+              hover:border-gray-300 transition-all duration-200
+              placeholder:text-gray-400"
+              placeholder="your.email@example.com"
+            />
+          </div>
+        </div>
+
+        {/* Message Field */}
+        <div className="relative group">
+          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+            Message
+          </label>
+          <div className="relative">
+            <div className="absolute left-0 top-3 pl-3 pointer-events-none">
+              <HiPencilAlt size={18} className="text-gray-400 group-focus-within:text-emerald-500 transition-colors duration-200" />
+            </div>
+            <textarea
+              name="message"
+              id="message"
+              required
+              rows={4}
+              className="block w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg
+              text-gray-700 bg-white/80 resize-none
+              focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/10 focus:outline-none
+              hover:border-gray-300 transition-all duration-200
+              placeholder:text-gray-400"
+              placeholder="Your message..."
+            />
+          </div>
+        </div>
+
+        {/* Captcha Field */}
+        <div className="relative group">
+          <div className="flex items-center justify-between mb-2">
+            <label htmlFor="captcha" className="block text-sm font-medium text-emerald-800">
+              Prove you're human (or really good at math)
+            </label>
+            <button
+              type="button"
+              onClick={() => {
+                generateCaptcha();
+                setCaptchaAnswer('');
+              }}
+              className="text-emerald-600 hover:text-emerald-700 text-sm"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              New Problem
             </button>
           </div>
-          <form
-            ref={formRef}
-            onSubmit={handleSubmit}
-            className="p-6 space-y-4"
-          >
-            {/* Name Field */}
-            <div className="relative group">
-              <label htmlFor="user_name" className="block text-sm font-medium text-gray-700 mb-2">
-                Name
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <HiUser size={18} className="text-gray-400 group-focus-within:text-emerald-500 transition-colors duration-200" />
-                </div>
-                <input
-                  type="text"
-                  name="user_name"
-                  id="user_name"
-                  required
-                  className="block w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg
-                  text-gray-700 bg-white/80
-                  focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/10 focus:outline-none
-                  hover:border-gray-300 transition-all duration-200
-                  placeholder:text-gray-400"
-                  placeholder="Your name"
-                />
-              </div>
-            </div>
-
-            {/* Email Field */}
-            <div className="relative group">
-              <label htmlFor="user_email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <HiMail size={18} className="text-gray-400 group-focus-within:text-emerald-500 transition-colors duration-200" />
-                </div>
-                <input
-                  type="email"
-                  name="user_email"
-                  id="user_email"
-                  required
-                  className="block w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg
-                  text-gray-700 bg-white/80
-                  focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/10 focus:outline-none
-                  hover:border-gray-300 transition-all duration-200
-                  placeholder:text-gray-400"
-                  placeholder="your.email@example.com"
-                />
-              </div>
-            </div>
-
-            {/* Message Field */}
-            <div className="relative group">
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                Message
-              </label>
-              <div className="relative">
-                <div className="absolute left-0 top-3 pl-3 pointer-events-none">
-                  <HiPencilAlt size={18} className="text-gray-400 group-focus-within:text-emerald-500 transition-colors duration-200" />
-                </div>
-                <textarea
-                  name="message"
-                  id="message"
-                  required
-                  rows={4}
-                  className="block w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg
-                  text-gray-700 bg-white/80 resize-none
-                  focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/10 focus:outline-none
-                  hover:border-gray-300 transition-all duration-200
-                  placeholder:text-gray-400"
-                  placeholder="Your message..."
-                />
-              </div>
-            </div>
-
-            {/* Captcha Field */}
-            <div className="relative group">
-              <div className="flex items-center justify-between mb-2">
-                <label htmlFor="captcha" className="block text-sm font-medium text-emerald-800">
-                  Prove you're human (or really good at math)
-                </label>
-                <button
-                  type="button"
-                  onClick={() => {
-                    generateCaptcha();
-                    setCaptchaAnswer('');
-                  }}
-                  className="text-emerald-600 hover:text-emerald-700 text-sm"
+          <div className="relative">
+            <div className="mb-3 p-4 bg-emerald-50 rounded-xl">
+              <div className="flex items-start space-x-4">
+                {/* Cartoon Image - now clickable */}
+                <div 
+                  className="relative w-20 h-20 flex-shrink-0 cursor-pointer hover:scale-105 transition-transform"
+                  onClick={handleCartoonClick}
+                  title="Click me to hear the question!"
                 >
-                  New Problem
-                </button>
-              </div>
-              <div className="relative">
-                <div className="mb-3 p-4 bg-emerald-50 rounded-xl">
-                  <div className="flex items-start space-x-4">
-                    {/* Cartoon Image - now clickable */}
-                    <div 
-                      className="relative w-20 h-20 flex-shrink-0 cursor-pointer hover:scale-105 transition-transform"
-                      onClick={handleCartoonClick}
-                      title="Click me to hear the question!"
-                    >
-                      <Image
-                        src="/cartoon.png"
-                        alt="Amino Fabian Cartoon"
-                        width={80}
-                        height={80}
-                        className="rounded-full"
-                      />
-                    </div>
-                    {/* Message Bubble */}
-                    <div className="relative bg-white p-4 rounded-xl shadow-sm flex-grow">
-                      {/* Triangle for speech bubble */}
-                      <div className="absolute left-[-8px] top-4 w-4 h-4 bg-white transform rotate-45" />
-                      <p className="font-['Caveat'] text-lg text-emerald-800 relative z-10">
-                        Hey there! Can you solve this for me? <span className="font-['Georgia'] ml-3 bg-emerald-50 px-2 text-xs"> {captchaProblem.question} = ? </span> 
-                        <br />
-                        <span className="text-sm text-emerald-600 italic">
-                          (Or just WhatsApp if math isn&apos;t your thing 😉)
-                        </span>
-                      </p>
-                      {captchaAnswer !== '' && (
-                        <div className={`mt-3 p-3 rounded-lg ${isAnswerCorrect ? 'bg-emerald-50' : 'bg-rose-50'}`}>
-                          <p className={`font-['Caveat'] text-lg ${isAnswerCorrect ? 'text-emerald-600' : 'text-rose-500'}`}>
-                            {currentMessage}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  <Image
+                    src="/cartoon.png"
+                    alt="Amino Fabian Cartoon"
+                    width={80}
+                    height={80}
+                    className="rounded-full"
+                  />
                 </div>
-                <input
-                  type="text"
-                  id="captcha"
-                  value={captchaAnswer}
-                  onChange={(e) => setCaptchaAnswer(e.target.value)}
-                  required
-                  className="block w-full pl-4 pr-4 py-2.5 border border-gray-200 rounded-lg
-                  text-gray-700 bg-white/80
-                  focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/10 focus:outline-none
-                  hover:border-gray-300 transition-all duration-200
-                  placeholder:text-gray-400"
-                  placeholder="Your answer..."
-                />
+                {/* Message Bubble */}
+                <div className="relative bg-white p-4 rounded-xl shadow-sm flex-grow">
+                  {/* Triangle for speech bubble */}
+                  <div className="absolute left-[-8px] top-4 w-4 h-4 bg-white transform rotate-45" />
+                  <p className="font-['Caveat'] text-lg text-emerald-800 relative z-10">
+                    Hey there! Can you solve this for me? <span className="font-['Georgia'] ml-3 bg-emerald-50 px-2 text-xs"> {captchaProblem.question} = ? </span> 
+                    <br />
+                    <span className="text-sm text-emerald-600 italic">
+                      (Or just WhatsApp if math isn&apos;t your thing 😉)
+                    </span>
+                  </p>
+                  {captchaAnswer !== '' && (
+                    <div className={`mt-3 p-3 rounded-lg ${isAnswerCorrect ? 'bg-emerald-50' : 'bg-rose-50'}`}>
+                      <p className={`font-['Caveat'] text-lg ${isAnswerCorrect ? 'text-emerald-600' : 'text-rose-500'}`}>
+                        {currentMessage}
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
-
-            {/* Submit Button */}
-            <div className="relative">
-              <button
-                type="submit"
-                disabled={isSubmitting || !isAnswerCorrect}
-                className="w-full px-6 py-3 bg-emerald-500 hover:bg-emerald-600 
-                text-white font-medium rounded-lg shadow-sm
-                focus:outline-none focus:ring-2 focus:ring-emerald-500/20
-                disabled:opacity-50 disabled:cursor-not-allowed
-                transition-all duration-200 ease-out"
-              >
-                {isSubmitting ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Sending...
-                  </span>
-                ) : (
-                  <span className="flex items-center justify-center gap-2">
-                    <HiPaperAirplane className="h-5 w-5 text-white relative z-50 transform rotate-90" />
-                    Send Message
-                  </span>
-                )}
-              </button>
-            </div>
-
-            {/* Status Messages */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ 
-                opacity: submitStatus !== 'idle' ? 1 : 0,
-                y: submitStatus !== 'idle' ? 0 : 10
-              }}
-              className={`text-center py-2 rounded-lg ${
-                submitStatus === 'success'
-                  ? 'text-emerald-700 bg-emerald-50'
-                  : submitStatus === 'error'
-                  ? 'text-red-700 bg-red-50'
-                  : ''
-              }`}
-            >
-              {submitStatus === 'success' && 'Message sent successfully!'}
-              {submitStatus === 'error' && 'Failed to send message. Please try again.'}
-            </motion.div>
-          </form>
+            <input
+              type="text"
+              id="captcha"
+              value={captchaAnswer}
+              onChange={(e) => setCaptchaAnswer(e.target.value)}
+              required
+              className="block w-full pl-4 pr-4 py-2.5 border border-gray-200 rounded-lg
+              text-gray-700 bg-white/80
+              focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/10 focus:outline-none
+              hover:border-gray-300 transition-all duration-200
+              placeholder:text-gray-400"
+              placeholder="Your answer..."
+            />
+          </div>
         </div>
-      </div>
+
+        {/* Submit Button */}
+        <div className="relative mt-5">
+          <button
+            type="submit"
+            disabled={isSubmitting || !isAnswerCorrect}
+            className="w-full px-6 py-3 bg-emerald-500 hover:bg-emerald-600 
+            text-white font-medium rounded-lg shadow-sm
+            focus:outline-none focus:ring-2 focus:ring-emerald-500/20
+            disabled:opacity-50 disabled:cursor-not-allowed
+            transition-all duration-200 ease-out"
+          >
+            {isSubmitting ? (
+              <span className="flex items-center justify-center gap-2">
+                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Sending...
+              </span>
+            ) : (
+              <span className="flex items-center justify-center gap-2">
+                <HiPaperAirplane className="h-5 w-5 text-white relative z-50 transform rotate-90" />
+                Send Message
+              </span>
+            )}
+          </button>
+        </div>
+
+        {/* Status Messages */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ 
+            opacity: submitStatus !== 'idle' ? 1 : 0,
+            y: submitStatus !== 'idle' ? 0 : 10
+          }}
+          className={`text-center py-2 rounded-lg ${
+            submitStatus === 'success'
+              ? 'text-emerald-700 bg-emerald-50'
+              : submitStatus === 'error'
+              ? 'text-red-700 bg-red-50'
+              : ''
+          }`}
+        >
+          {submitStatus === 'success' && 'Message sent successfully!'}
+          {submitStatus === 'error' && 'Failed to send message. Please try again.'}
+        </motion.div>
+      </form>
     </div>
   );
 };

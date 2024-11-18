@@ -184,7 +184,7 @@ export default function HomePage(): JSX.Element {
           </section>
 
           {/* Portfolio Links Section */}
-          <section id="portfolio" className="min-h-screen transition-all duration-500 ease-out">
+          <section id="portfolio" className="py-20 transition-all duration-500 ease-out">
             <div className="container mx-auto px-4">
               <div className="transform hover:scale-[1.01] transition-all duration-300 ease-in-out">
                 <Suspense fallback={<div>Loading...</div>}>
@@ -195,7 +195,7 @@ export default function HomePage(): JSX.Element {
           </section>
 
           {/* Contact Form Section */}
-          <section id="contact" className="min-h-screen transition-all duration-500 ease-out">
+          <section id="contact" className="py-20 transition-all duration-500 ease-out">
             <div className="container mx-auto px-4">
               <div className="transform hover:scale-[1.01] transition-all duration-300 ease-in-out">
                 <Suspense fallback={<div>Loading...</div>}>

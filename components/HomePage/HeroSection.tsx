@@ -13,6 +13,7 @@ import {
   SiRedux, SiGraphql, SiFirebase, SiVercel,
   SiVite, SiPrisma, SiSupabase, SiStripe
 } from 'react-icons/si';
+import { HiPaperAirplane } from 'react-icons/hi';
 
 interface CodeLine {
   code: string;
@@ -466,6 +467,7 @@ const HeroSection: React.FC = () => {
                 >
                   <div className="flex flex-col space-y-4">
                     <div className="flex flex-wrap justify-center gap-4">
+
                     
                       <motion.button
                         onClick={() => setIsHireMeOpen(true)}
@@ -477,15 +479,15 @@ const HeroSection: React.FC = () => {
                         Hire Me
                       </motion.button>
 
-                      <motion.button
-                        onClick={() => setShowContactForm(true)}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg font-medium shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:scale-105 transition-all duration-300"
+                      <motion.a
+                        href="/#contact"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-500 text-white rounded-lg font-medium shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:scale-105 transition-all duration-300"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
+                        <HiPaperAirplane className="w-5 h-5 transform rotate-90" />
                         Get in Touch
-                        <ArrowRight className="w-5 h-5" />
-                      </motion.button>
+                      </motion.a>
 
                       <motion.a
                         href="#portfolio"
