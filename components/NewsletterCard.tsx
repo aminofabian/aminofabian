@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, X, Send, CheckCircle } from 'lucide-react';
 
@@ -15,48 +15,61 @@ const NewsletterCard = () => {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
-  const handleClose = () => {
-    setIsVisible(false);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('newsletter-hidden', 'true');
-    }
-  };
+  const handleClose = useCallback(() => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsVisible(false);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('newsletter-hidden', 'true');
+      }
+    }, 200);
+  }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // TODO: Implement your newsletter subscription logic here
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated API call
-    
-    setIsSubmitted(true);
-    setIsLoading(false);
-  };
+    try {
+      // TODO: Implement your newsletter subscription logic here
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated API call
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Newsletter subscription failed:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  if (!isVisible) return null;
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {isVisible && (
         <motion.div
-          initial={{ opacity: 0, y: 50, x: '100%' }}
-          animate={{ opacity: 1, y: 0, x: '0%' }}
-          exit={{ opacity: 0, y: 50, x: '100%' }}
-          transition={{ type: 'spring', damping: 20 }}
-          className="fixed bottom-8 right-8 z-50"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+          transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          className="fixed bottom-4 right-4 z-50"
         >
           <div className="relative">
             {/* Background blur effect */}
             <div className="absolute inset-0 bg-white/10 backdrop-blur-xl rounded-2xl" />
             
             {/* Main content */}
-            <div className="relative bg-gradient-to-br from-white/5 to-white/10 border border-white/20 p-6 rounded-2xl shadow-xl w-80 cursor-pointer">
+            <div className={`relative bg-gradient-to-br from-white/5 to-white/10 border border-white/20 p-6 rounded-2xl shadow-xl w-80 ${isClosing ? 'pointer-events-none' : ''}`}>
               {/* Close button */}
-              <button
+              <motion.button
                 onClick={handleClose}
-                className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors p-1 hover:bg-white/10 rounded-full"
+                className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors p-2 hover:bg-white/10 rounded-full group"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <X size={16} />
-              </button>
+                <X size={16} className="group-hover:rotate-90 transition-transform duration-200" />
+              </motion.button>
 
               {!isSubmitted ? (
                 <>
