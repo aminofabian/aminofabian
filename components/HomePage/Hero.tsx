@@ -1,8 +1,6 @@
-'use client'
-import React, { useState, useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React, { useState, useEffect, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { Github, Linkedin, Instagram, Briefcase, Terminal, ExternalLink } from 'lucide-react';
-import Image from 'next/image';
 
 interface CodeLine {
   code: string;
@@ -11,7 +9,7 @@ interface CodeLine {
 
 const CreativeCode = () => {
   const [currentLine, setCurrentLine] = useState<number>(0);
-  const codeLines: CodeLine[] = [
+  const codeLines: CodeLine[] = useMemo(() => [
     {
       code: '// Welcome to my portfolio',
       color: 'text-gray-400'
@@ -64,7 +62,7 @@ const CreativeCode = () => {
       code: '};',
       color: 'text-cyan-600'
     }
-  ];
+  ], []);
   
   useEffect(() => {
     const interval = setInterval(() => {
@@ -73,7 +71,7 @@ const CreativeCode = () => {
       );
     }, 2000);
     return () => clearInterval(interval);
-  }, []);
+  }, [codeLines]);
   
   return (
     <div className="font-mono text-sm leading-relaxed">

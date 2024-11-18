@@ -235,13 +235,13 @@ const FloatingChatButtons: React.FC = () => {
       />
       <FloatingChatButton
         icon={SiTelegram}
-        color="bg-blue-500"
-        hoverColor="hover:bg-blue-600"
+        color="bg-orange-500"
+        hoverColor="hover:bg-orange-600"
         href="https://t.me/aminofabian"
         text="Chat on Telegram"
         delay={0.4}
-        particleColors={["bg-blue-400", "bg-sky-400", "bg-cyan-400", "bg-indigo-400"]}
-        gradientFrom="from-blue-400"
+        particleColors={["bg-orange-400", "bg-sky-400", "bg-cyan-400", "bg-indigo-400"]}
+        gradientFrom="from-orange-400"
         gradientTo="to-cyan-500"
       />
       <FloatingChatButton

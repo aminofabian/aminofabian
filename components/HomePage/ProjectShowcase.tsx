@@ -190,7 +190,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 };
 
 const ProjectShowcase: React.FC = () => {
-  const [isExpanded] = useState(false);
   return (
     <div className="w-full space-y-6">
       {projects.map((project) => (

@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation, AnimatePresence, useInView } from 'framer-motion';
-import { Github, Linkedin, Instagram, Briefcase, Terminal, ExternalLink, Code2, Sparkles, ArrowRight, Trash2, MessageCircle } from 'lucide-react';
+import { Briefcase, Terminal, ExternalLink, Code2, Sparkles, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import SocialLinks from './SocialLinks';
 import {
@@ -9,8 +9,7 @@ import {
   SiTailwindcss, SiNodedotjs, SiPython, SiGit,
   SiMongodb, SiPostgresql, SiDocker, SiAew,
   SiRedux, SiGraphql, SiFirebase, SiVercel,
-  SiVite, SiPrisma, SiSupabase, SiStripe,
-  SiWhatsapp, SiTelegram, SiDiscord
+  SiVite, SiPrisma, SiSupabase, SiStripe
 } from 'react-icons/si';
 
 interface CodeLine {
@@ -266,6 +265,16 @@ const FireworkEffect = ({ color, isVisible }: { color: string; isVisible: boolea
   ) : null;
 };
 
+interface FloatingChatButtonProps {
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+  hoverColor: string;
+  href: string;
+  text: string;
+  delay: number;
+  particleColor: string;
+}
+
 const FloatingChatButton = ({ 
   icon: Icon, 
   color, 
@@ -274,15 +283,7 @@ const FloatingChatButton = ({
   text, 
   delay,
   particleColor
-}: { 
-  icon: any; 
-  color: string; 
-  hoverColor: string; 
-  href: string; 
-  text: string;
-  delay: number;
-  particleColor: string;
-}) => {
+}: FloatingChatButtonProps) => {
   const [showText, setShowText] = useState(false);
   const [showFirework, setShowFirework] = useState(false);
   const buttonAnimation = useAnimation();

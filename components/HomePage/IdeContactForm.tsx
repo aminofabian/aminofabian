@@ -19,7 +19,7 @@ const IDEContactForm = () => {
   const isInView = useInView(ref, { once: false, amount: 0.2 });
 
   // Text-to-speech function (disabled)
-  const speak = (text: string) => {
+  const speak = () => {
     // Voice functionality disabled
     return;
   };
@@ -40,18 +40,18 @@ const IDEContactForm = () => {
     if (!correct && captchaAnswer !== '') {
       const message = getRandomMessage();
       setCurrentMessage(message);
-      speak(message); // Speak the incorrect message
+      speak(); // Speak the incorrect message
     } else if (correct) {
       const message = getRandomSuccessMessage();
       setCurrentMessage(message);
-      speak(message); // Speak the success message
+      speak(); // Speak the success message
     }
   }, [captchaAnswer, captchaProblem.answer]);
 
   const generateCaptcha = () => {
-    let num1 = Math.floor(Math.random() * 10) + 1;
-    let num2 = Math.floor(Math.random() * 10) + 1;
-    let num3 = Math.floor(Math.random() * 5) + 1;
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    const num3 = Math.floor(Math.random() * 5) + 1;
     let question = '';
     let answer = 0;
     
@@ -271,7 +271,7 @@ const IDEContactForm = () => {
                       Hey there! Can you solve this for me? {captchaProblem.question} = ?
                       <br />
                       <span className="text-sm text-emerald-600 italic">
-                        (Or just WhatsApp  if math isn't your thing 😉)
+                        (Or just WhatsApp if math isn&apos;t your thing 😉)
                       </span>
                     </p>
                     {captchaAnswer !== '' && (

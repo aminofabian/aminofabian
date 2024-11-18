@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && npm run generate-sitemap",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -15,6 +17,7 @@
     "@types/react-icons": "^2.2.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "critters": "^0.0.23",
     "framer-motion": "^11.11.17",
     "lucide-react": "^0.454.0",
     "next": "14.2.16",
@@ -25,12 +28,15 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^13.5.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.16",
+    "globby": "^11.1.0",
     "postcss": "^8",
+    "prettier": "^2.8.8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

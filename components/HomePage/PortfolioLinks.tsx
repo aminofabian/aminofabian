@@ -140,20 +140,16 @@ const PortfolioLinks = () => {
     setCurrentPage(page);
   };
 
-  const renderPaginationButtons = () => {
+  const getPageNumbers = () => {
     const buttons = [];
     for (let i = 1; i <= totalPages; i++) {
       buttons.push(
         <button
           key={i}
           onClick={() => handlePageChange(i)}
-          className={`
-            w-8 h-8 rounded-full text-sm font-medium transition-all duration-200
-            ${currentPage === i 
-              ? 'bg-emerald-500 text-white shadow-lg' 
-              : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
-            }
-          `}
+          className={`px-3 py-1 rounded-md ${
+            currentPage === i ? 'bg-emerald-500 text-white' : 'text-gray-600'
+          }`}
         >
           {i}
         </button>
@@ -161,10 +157,6 @@ const PortfolioLinks = () => {
     }
     return buttons;
   };
-
-  const num1 = currentPage === 1 ? totalPages : currentPage - 1;
-  const num2 = currentPage;
-  const num3 = currentPage === totalPages ? 1 : currentPage + 1;
 
   return (
     <section ref={ref} className="py-20">
@@ -411,7 +403,7 @@ const PortfolioLinks = () => {
                 <FiChevronLeft className="w-4 h-4" />
               </button>
 
-              {renderPaginationButtons()}
+              {getPageNumbers()}
 
               <button
                 onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
