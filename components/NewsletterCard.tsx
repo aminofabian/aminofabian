@@ -5,10 +5,23 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, X, Send, CheckCircle } from 'lucide-react';
 
 const NewsletterCard = () => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hidden = localStorage.getItem('newsletter-hidden');
+      return !hidden;
+    }
+    return true;
+  });
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const handleClose = () => {
+    setIsVisible(false);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('newsletter-hidden', 'true');
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,8 +52,8 @@ const NewsletterCard = () => {
             <div className="relative bg-gradient-to-br from-white/5 to-white/10 border border-white/20 p-6 rounded-2xl shadow-xl w-80">
               {/* Close button */}
               <button
-                onClick={() => setIsVisible(false)}
-                className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors"
+                onClick={handleClose}
+                className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors p-1 hover:bg-white/10 rounded-full"
               >
                 <X size={16} />
               </button>
