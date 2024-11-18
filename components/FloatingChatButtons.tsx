@@ -16,30 +16,45 @@ const Particle = ({ color, index }: { color: string; index: number }) => {
   return (
     <motion.div
       className={`absolute w-2 h-2 rounded-full ${color}`}
-      initial={{ scale: 0, x: 0, y: 0 }}
+      initial={{ scale: 0, x: 0, y: 0, opacity: 1 }}
       animate={{
-        scale: [0, 1.5, 0],
-        x: [0, x * (0.8 + Math.random() * 0.4)],
-        y: [0, y * (0.8 + Math.random() * 0.4)],
+        scale: [0, 1.2, 0.8, 0],
+        x: [0, x * 0.5, x * (0.8 + Math.random() * 0.4)],
+        y: [0, y * 0.5, y * (0.8 + Math.random() * 0.4)],
+        opacity: [1, 0.8, 0],
       }}
       transition={{
-        duration: 1,
-        ease: "easeOut",
+        duration: 1.2,
+        ease: [0.22, 1, 0.36, 1],
+        times: [0, 0.3, 0.8, 1],
       }}
     />
   );
 };
 
 const FireworkEffect = ({ colors, isVisible }: { colors: string[]; isVisible: boolean }) => {
-  const particles = Array.from({ length: 12 });
+  const particles = Array.from({ length: 16 });
   
-  return isVisible ? (
-    <div className="absolute inset-0">
-      {particles.map((_, i) => (
-        <Particle key={i} color={colors[i % colors.length]} index={i} />
-      ))}
-    </div>
-  ) : null;
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div 
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          {particles.map((_, i) => (
+            <Particle 
+              key={i} 
+              color={colors[i % colors.length]} 
+              index={i} 
+            />
+          ))}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
 };
 
 const FloatingChatButton = ({ 
@@ -69,152 +84,130 @@ const FloatingChatButton = ({
   const buttonRef = useRef(null);
   const isInView = useInView(buttonRef, { once: true });
   const [autoShowText, setAutoShowText] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const animate = async () => {
+      await new Promise(resolve => setTimeout(resolve, delay * 100));
+      
       // Initial entrance animation
       await buttonAnimation.start({
-        scale: [0, 1.2, 1],
-        rotate: [0, -10, 10, 0],
-        transition: { duration: 0.8, ease: "easeOut" }
+        scale: [0, 1.3, 0.9, 1],
+        rotate: [0, -15, 15, 0],
+        transition: { 
+          duration: 1.2,
+          ease: [0.22, 1, 0.36, 1],
+          times: [0, 0.4, 0.7, 1]
+        }
       });
 
-      // Initial delay before starting text animations
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      // Initial delay before animations
+      await new Promise(resolve => setTimeout(resolve, 2000));
 
-      // Trigger initial firework effect
-      setShowFirework(true);
-      setTimeout(() => setShowFirework(false), 1000);
-
-      // Start continuous animations
-      const fireworkInterval = setInterval(() => {
-        if (Math.random() > 0.3) {
-          setShowFirework(true);
-          setTimeout(() => setShowFirework(false), 1000);
+      // Continuous subtle floating animation
+      buttonAnimation.start({
+        y: [0, -8, 0],
+        transition: {
+          duration: 3,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "reverse"
         }
-      }, 2000);
+      });
 
-      // Text display interval with longer cycle
-      const textInterval = setInterval(() => {
-        setAutoShowText(true);
-        setTimeout(() => setAutoShowText(false), 3000);
-      }, 10000);
+      // Periodic effects
+      const effects = async () => {
+        while (true) {
+          await new Promise(resolve => setTimeout(resolve, 5000 + Math.random() * 3000));
+          
+          if (Math.random() > 0.4) {
+            setShowFirework(true);
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            setShowFirework(false);
+          }
 
-      // Continuous floating animation
-      while (true) {
-        await buttonAnimation.start({
-          y: [0, -8, 0],
-          scale: [1, 1.1, 1],
-          transition: { duration: 1.5, ease: "easeInOut" }
-        });
-        await new Promise(resolve => setTimeout(resolve, 1500));
-      }
-
-      return () => {
-        clearInterval(fireworkInterval);
-        clearInterval(textInterval);
+          if (Math.random() > 0.6) {
+            setAutoShowText(true);
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            setAutoShowText(false);
+          }
+        }
       };
+
+      effects();
     };
-    
+
     if (isInView) {
       animate();
     }
-  }, [buttonAnimation, isInView]);
+  }, [isInView, buttonAnimation, delay]);
 
   return (
     <motion.div
       ref={buttonRef}
       className="relative"
-      onHoverStart={() => setShowText(true)}
-      onHoverEnd={() => setShowText(false)}
-      initial={{ x: 100, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ delay }}
+      animate={buttonAnimation}
     >
-      <AnimatePresence>
-        {(showText || autoShowText) && (
-          <motion.div
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 10 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut"
-            }}
-            className={`absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-gradient-to-r ${gradientFrom} ${gradientTo} p-[1px] rounded-xl shadow-lg overflow-hidden`}
-            style={{
-              backgroundSize: '200% 100%',
-            }}
-          >
-            <div className="relative bg-white/95 backdrop-blur-md px-4 py-2 rounded-[11px]">
-              <motion.div 
-                className="text-xs font-light"
-                animate={{
-                  scale: autoShowText ? [1, 1.03, 1] : 1,
-                  opacity: autoShowText ? [0.8, 1, 0.8] : 1
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: autoShowText ? Infinity : 0,
-                  ease: "easeInOut"
-                }}
-              >
-                <span className={`bg-gradient-to-r ${gradientFrom} ${gradientTo} bg-clip-text text-transparent font-semibold`}>
-                  {text}
-                </span>
-              </motion.div>
-              <motion.div 
-                className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-2 h-2 bg-gradient-to-br ${gradientFrom} ${gradientTo} transform rotate-45`}
-                animate={{
-                  scale: autoShowText ? [1, 1.1, 1] : 1
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: autoShowText ? Infinity : 0,
-                  ease: "easeInOut"
-                }}
-              />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
       <motion.a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className={`flex items-center justify-center w-14 h-14 ${color} ${hoverColor} text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 relative group overflow-visible`}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        animate={buttonAnimation}
+        className={`relative flex items-center justify-center w-12 h-12 rounded-full shadow-lg
+          transition-colors duration-300 ${color} hover:${hoverColor}`}
+        onHoverStart={() => {
+          setShowText(true);
+          setIsHovered(true);
+        }}
+        onHoverEnd={() => {
+          setShowText(false);
+          setIsHovered(false);
+        }}
+        whileHover={{
+          scale: 1.1,
+          transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
+        }}
+        whileTap={{
+          scale: 0.95,
+          rotate: [-5, 0],
+          transition: { duration: 0.3 }
+        }}
       >
-        <Icon className="w-6 h-6 relative z-10" />
+        <motion.div
+          animate={isHovered ? {
+            rotate: [0, -10, 10, 0],
+            transition: {
+              duration: 0.6,
+              ease: "easeInOut",
+              times: [0, 0.2, 0.8, 1]
+            }
+          } : {}}
+        >
+          <Icon className="w-6 h-6 text-white" />
+        </motion.div>
         <FireworkEffect colors={particleColors} isVisible={showFirework} />
-        <motion.div
-          className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"
-          initial={false}
-          animate={{
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 1,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute inset-0 rounded-full opacity-50 blur-md"
-          style={{ background: color }}
-          animate={{
-            opacity: [0.3, 0.6, 0.3],
-            scale: [0.8, 1.1, 0.8],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
       </motion.a>
+      
+      <AnimatePresence>
+        {(showText || autoShowText) && (
+          <motion.div
+            className="absolute right-full mr-4 top-1/2 -translate-y-1/2 whitespace-nowrap overflow-hidden"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -10 }}
+            transition={{
+              duration: 0.3,
+              ease: [0.22, 1, 0.36, 1]
+            }}
+          >
+            <div className="relative bg-white/10 backdrop-blur-md border border-white/20 px-2.5 py-1.5 rounded-lg">
+              <span className="text-xs font-light text-white/90">
+                {text}
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent" />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
