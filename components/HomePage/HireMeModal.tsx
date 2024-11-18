@@ -45,7 +45,7 @@ const HireMeModal = ({ isOpen, onClose }: HireMeModalProps) => {
                 ease: [0.22, 1, 0.36, 1]
               }
             }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-900 rounded-xl shadow-xl p-6 z-50 w-full max-w-md"
+            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md dark:bg-gray-900 rounded-xl shadow-xl p-6 z-50 w-full max-w-md"
           >
             <div className="relative">
               <motion.button
@@ -53,14 +53,14 @@ const HireMeModal = ({ isOpen, onClose }: HireMeModalProps) => {
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ duration: 0.2 }}
-                className="absolute right-0 top-0 p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                className="absolute right-0 top-0 p-2 text-gray-50 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 border rounded-full"
               >
                 <X className="w-5 h-5" />
               </motion.button>
 
               <div className="text-center mt-4">
                 <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">Let's Work Together!</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-8">Choose your preferred way to connect with me:</p>
+                <p className="text-gray-100 dark:text-gray-300 mb-8">Choose your preferred way to connect with me:</p>
 
                 <div className="space-y-4">
                   <motion.a
@@ -112,7 +112,7 @@ const HireMeModal = ({ isOpen, onClose }: HireMeModalProps) => {
                   </motion.a>
                 </div>
 
-                <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
+                <p className="mt-6 text-xs text-gray-50 dark:text-gray-400">
                   Looking forward to discussing your project!
                 </p>
               </div>
