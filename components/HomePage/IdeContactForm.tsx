@@ -148,84 +148,84 @@ const IDEContactForm = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="relative max-w-2xl mx-auto"
       >
-        {/* Form Background with Gradient Border */}
-        <div className="absolute -inset-[2px] bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-2xl opacity-40" />
+        {/* Form Background */}
+        <div className="absolute -inset-[1px] bg-gradient-to-br from-emerald-100 to-emerald-50 rounded-2xl opacity-30" />
         
         {/* Form Content */}
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-10 space-y-6"
+          className="relative border border-emerald-100/30 bg-white/95 shadow-sm rounded-2xl p-8 md:p-10 space-y-6"
         >
           {/* Name Field */}
           <div className="relative group">
-            <label htmlFor="user_name" className="block text-sm font-medium text-emerald-800 mb-2">
+            <label htmlFor="user_name" className="block text-sm font-medium text-gray-700 mb-2">
               Name
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-50">
-                <HiUser className="h-5 w-5 text-emerald-500 relative" />
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <HiUser size={18} className="text-gray-400 group-focus-within:text-emerald-500 transition-colors duration-200" />
               </div>
               <input
                 type="text"
                 name="user_name"
                 id="user_name"
                 required
-                className="block w-full pl-10 pr-4 py-3 border-2 border-emerald-100 rounded-xl 
-                focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 focus:outline-none
-                hover:border-emerald-200 transition-all duration-300
-                placeholder:text-gray-400 text-gray-700"
+                className="block w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg
+                text-gray-700 bg-white/80
+                focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/10 focus:outline-none
+                hover:border-gray-300 transition-all duration-200
+                placeholder:text-gray-400"
                 placeholder="Your name"
               />
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/10 to-emerald-600/10 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300" />
             </div>
           </div>
 
           {/* Email Field */}
           <div className="relative group">
-            <label htmlFor="user_email" className="block text-sm font-medium text-emerald-800 mb-2">
+            <label htmlFor="user_email" className="block text-sm font-medium text-gray-700 mb-2">
               Email
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none z-50">
-                <HiMail className="h-5 w-5 text-emerald-500 relative" />
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <HiMail size={18} className="text-gray-400 group-focus-within:text-emerald-500 transition-colors duration-200" />
               </div>
               <input
                 type="email"
                 name="user_email"
                 id="user_email"
                 required
-                className="block w-full pl-10 pr-4 py-3 border-2 border-emerald-100 rounded-xl 
-                focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 focus:outline-none
-                hover:border-emerald-200 transition-all duration-300
-                placeholder:text-gray-400 text-gray-700"
+                className="block w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg
+                text-gray-700 bg-white/80
+                focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/10 focus:outline-none
+                hover:border-gray-300 transition-all duration-200
+                placeholder:text-gray-400"
                 placeholder="your.email@example.com"
               />
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/10 to-emerald-600/10 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300" />
             </div>
           </div>
 
           {/* Message Field */}
           <div className="relative group">
-            <label htmlFor="message" className="block text-sm font-medium text-emerald-800 mb-2">
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
               Message
             </label>
             <div className="relative">
-              <div className="absolute left-0 top-3 pl-3 flex items-center pointer-events-none z-50">
-                <HiPencilAlt className="h-5 w-5 text-emerald-500 relative" />
+              <div className="absolute left-0 top-3 pl-3 pointer-events-none">
+                <HiPencilAlt size={18} className="text-gray-400 group-focus-within:text-emerald-500 transition-colors duration-200" />
               </div>
               <textarea
                 name="message"
                 id="message"
                 required
                 rows={4}
-                className="block w-full pl-10 pr-4 py-3 border-2 border-emerald-100 rounded-xl 
-                focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 focus:outline-none
-                hover:border-emerald-200 transition-all duration-300
-                placeholder:text-gray-400 text-gray-700 resize-none"
+                className="block w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg
+                text-gray-700 bg-white/80 resize-none
+                focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/10 focus:outline-none
+                hover:border-gray-300 transition-all duration-200
+                placeholder:text-gray-400"
                 placeholder="Your message..."
               />
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/10 to-emerald-600/10 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300" />
             </div>
           </div>
 
@@ -290,10 +290,11 @@ const IDEContactForm = () => {
                 value={captchaAnswer}
                 onChange={(e) => setCaptchaAnswer(e.target.value)}
                 required
-                className="block w-full pl-4 pr-4 py-3 border-2 border-emerald-100 rounded-xl 
-                focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 focus:outline-none
-                hover:border-emerald-200 transition-all duration-300
-                placeholder:text-gray-400 text-gray-700"
+                className="block w-full pl-4 pr-4 py-2.5 border border-gray-200 rounded-lg
+                text-gray-700 bg-white/80
+                focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/10 focus:outline-none
+                hover:border-gray-300 transition-all duration-200
+                placeholder:text-gray-400"
                 placeholder="Your answer..."
               />
             </div>
@@ -304,34 +305,26 @@ const IDEContactForm = () => {
             <button
               type="submit"
               disabled={isSubmitting || !isAnswerCorrect}
-              className={`
-                relative w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl
-                font-medium text-white transition-all duration-300 overflow-hidden
-                ${isSubmitting
-                  ? 'bg-emerald-400 cursor-not-allowed'
-                  : !isAnswerCorrect
-                  ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-600/20 hover:shadow-emerald-500/20'
-                }
-              `}
+              className="w-full px-6 py-3 bg-emerald-500 hover:bg-emerald-600 
+              text-white font-medium rounded-lg shadow-sm
+              focus:outline-none focus:ring-2 focus:ring-emerald-500/20
+              disabled:opacity-50 disabled:cursor-not-allowed
+              transition-all duration-200 ease-out"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-emerald-500 opacity-0 hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative flex items-center gap-2">
-                {isSubmitting ? (
-                  <>
-                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    <span>Sending...</span>
-                  </>
-                ) : (
-                  <>
-                    <HiPaperAirplane className="h-5 w-5 text-white relative z-50 transform rotate-90" />
-                    <span>Send Message</span>
-                  </>
-                )}
-              </div>
+              {isSubmitting ? (
+                <span className="flex items-center justify-center gap-2">
+                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Sending...
+                </span>
+              ) : (
+                <span className="flex items-center justify-center gap-2">
+                  <HiPaperAirplane className="h-5 w-5 text-white relative z-50 transform rotate-90" />
+                  Send Message
+                </span>
+              )}
             </button>
           </div>
 

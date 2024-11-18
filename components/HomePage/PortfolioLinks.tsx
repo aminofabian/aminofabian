@@ -369,7 +369,7 @@ const PortfolioLinks = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-gray-50 p-6 rounded-xl"
+                  className="bg-emerald-50 p-6 rounded-xl"
                 >
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">{site.name}</h3>
                   <p className="text-gray-600 mb-4">{site.description}</p>
@@ -377,7 +377,7 @@ const PortfolioLinks = () => {
                     {site.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm"
+                        className="px-3 py-1 bg-grey-100 text-grey-600 rounded-full text-xs font-italic cursor-pointer hover:bg-grey-200 transition-colors duration-200"
                       >
                         {tech}
                       </span>
