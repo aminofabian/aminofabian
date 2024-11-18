@@ -48,14 +48,11 @@ const nextConfig = {
               test: /[\\/]node_modules[\\/]/,
               priority: -10,
               reuseExistingChunk: true,
-              name(module) {
-                const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-                return `vendor.${packageName.replace('@', '')}`;
-              },
+              name: 'vendors',
             },
             commons: {
               test: /[\\/]components[\\/]/,
-              name: 'components',
+              name: 'commons',
               minChunks: 2,
               priority: -5,
               reuseExistingChunk: true,
@@ -69,7 +66,6 @@ const nextConfig = {
         },
       };
 
-      // Add Terser options for better minification
       if (!config.optimization.minimizer) {
         config.optimization.minimizer = [];
       }
