@@ -445,7 +445,7 @@ const HeroSection: React.FC = () => {
                 </h1>
 
                 <h1 className="mt-6 text-2xl text-gray-700 font-medium leading-relaxed">
-                  Senior Software Engineer
+                Full Stack Software Developer & Creative Technologist
                 </h1>
 
                 <p className="mt-4 text-lg text-gray-600 max-w-lg leading-relaxed">
