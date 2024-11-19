@@ -387,7 +387,7 @@ const HeroSection: React.FC = () => {
   const [showContactForm, setShowContactForm] = useState(false);
 
   return (
-    <div ref={ref} className="min-h-screen relative overflow-visible dark:bg-gray-900">
+    <div ref={ref} className="min-h-screen relative overflow-visible">
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-500/10 dark:bg-emerald-400/10 rounded-full blur-3xl animate-pulse"></div>
