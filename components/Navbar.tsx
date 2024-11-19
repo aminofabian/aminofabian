@@ -393,7 +393,7 @@ const Navbar = () => {
                         setIsOpen(false);
                         setIsModalOpen(true);
                       }}
-                      className="w-full mt-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-300 dark:from-emerald-600 dark:to-emerald-400 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-500 dark:hover:from-emerald-500 dark:hover:to-emerald-300 transition-all duration-300 shadow-lg shadow-emerald-500/20 dark:shadow-emerald-500/40 hover:shadow-xl flex items-center gap-2 justify-center"
+                      className="w-full mt-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-400 dark:from-emerald-600 dark:to-emerald-400 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-500 dark:hover:from-emerald-500 dark:hover:to-emerald-300 transition-all duration-300 shadow-lg shadow-emerald-500/20 dark:shadow-emerald-500/40 hover:shadow-xl flex items-center gap-2 justify-center"
                     >
                       <motion.span
                         animate={{ x: [0, 2, 0] }}
