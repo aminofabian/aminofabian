@@ -387,12 +387,12 @@ const HeroSection: React.FC = () => {
   const [showContactForm, setShowContactForm] = useState(false);
 
   return (
-    <div ref={ref} className="min-h-screen relative overflow-visible">
+    <div ref={ref} className="min-h-screen relative overflow-visible dark:bg-gray-900">
       {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-500/10 dark:bg-emerald-400/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-emerald-500/10 dark:bg-emerald-400/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-500/5 dark:bg-emerald-400/5 rounded-full blur-3xl"></div>
 
         {/* Tech Stack Background */}
         <div className="absolute inset-0">
@@ -433,29 +433,37 @@ const HeroSection: React.FC = () => {
 
                 <div className="inline-block">
                   <motion.div
-                    className="text-sm font-medium px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500/10 to-emerald-500/10 text-emerald-800 hover:from-emerald-500/20 hover:to-emerald-500/20 transition-all duration-300"
+                    className="text-sm font-medium px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500/10 to-emerald-500/10 dark:from-emerald-400/10 dark:to-emerald-400/10 text-emerald-800 dark:text-emerald-300 hover:from-emerald-500/20 hover:to-emerald-500/20 dark:hover:from-emerald-400/20 dark:hover:to-emerald-400/20 transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <span className="bg-gradient-to-r from-emerald-600 to-emerald-600 bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-emerald-600 to-emerald-600 dark:from-emerald-400 dark:to-emerald-300 bg-clip-text text-transparent">
                       Available for exciting projects
                     </span>
                   </motion.div>
                 </div>
 
                 <h1 className="text-6xl font-bold mt-6">
-                  <span className="block text-gray-800">Fabian</span>
-                  <span className="block mt-1 bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">
+                  <span className="block text-gray-800 dark:text-gray-100">Fabian</span>
+                  <span className="block mt-1 bg-gradient-to-r from-emerald-500 to-emerald-600 dark:from-emerald-400 dark:to-emerald-300 bg-clip-text text-transparent">
                     Amino
                   </span>
                 </h1>
 
-                <h1 className="mt-6 text-2xl text-gray-700 font-medium leading-relaxed">
-                Full Stack Software Developer & Creative Technologist
+                <h1 className="mt-6 text-2xl text-gray-700 dark:text-gray-300 font-medium leading-relaxed relative">
+                  <span className="relative z-10">Full Stack Software Developer & Creative Technologist</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/80 to-white/40 dark:from-emerald-900/30 dark:to-gray-900/30 backdrop-blur-[2px] -z-0 rounded-lg transform -skew-x-2"></div>
                 </h1>
 
-                <p className="mt-4 text-lg text-gray-600 max-w-lg leading-relaxed">
-                  Transforming complex challenges into elegant solutions. 
-                  Specializing in scalable architectures and innovative user experiences.
+                <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-lg leading-relaxed relative group">
+                  <span className="relative z-10 px-4 py-2 block">
+                    Transforming complex challenges into elegant solutions. 
+                    Specializing in scalable architectures and innovative user experiences.
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-emerald-50/30 to-white/50 dark:from-gray-800/50 dark:via-emerald-900/20 dark:to-gray-800/50 opacity-80 group-hover:opacity-100 backdrop-blur-[1px] rounded-xl transition-all duration-300 border border-emerald-100/20 dark:border-emerald-500/10"></div>
+                  {/* Decorative Elements */}
+                  <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-12 bg-gradient-to-b from-emerald-500/20 to-transparent rounded-full"></div>
+                  <div className="absolute -right-1 top-0 w-8 h-8 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-full blur-sm"></div>
+                  <div className="absolute -bottom-1 right-4 w-6 h-6 bg-gradient-to-tl from-emerald-500/10 to-transparent rounded-full blur-sm"></div>
                 </p>
 
                 {/* CTA Section */}
@@ -471,7 +479,7 @@ const HeroSection: React.FC = () => {
                     
                       <motion.button
                         onClick={() => setIsHireMeOpen(true)}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-500 text-white rounded-lg font-medium shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:scale-105 transition-all duration-300"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 dark:from-emerald-600 dark:to-emerald-500 text-white rounded-lg font-medium shadow-lg shadow-emerald-500/30 dark:shadow-emerald-500/20 hover:shadow-xl hover:scale-105 transition-all duration-300"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -481,7 +489,7 @@ const HeroSection: React.FC = () => {
 
                       <motion.a
                         href="/#contact"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-500 text-white rounded-lg font-medium shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:scale-105 transition-all duration-300"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 dark:from-emerald-600 dark:to-emerald-500 text-white rounded-lg font-medium shadow-lg shadow-emerald-500/30 dark:shadow-emerald-500/20 hover:shadow-xl hover:scale-105 transition-all duration-300"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -491,7 +499,7 @@ const HeroSection: React.FC = () => {
 
                       <motion.a
                         href="#portfolio"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-800 rounded-lg font-medium border border-gray-200 hover:border-emerald-200 hover:shadow-lg hover:scale-105 transition-all duration-300"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-lg font-medium border border-gray-200 dark:border-gray-700 hover:border-emerald-200 dark:hover:border-emerald-700 hover:shadow-lg hover:scale-105 transition-all duration-300"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -508,9 +516,9 @@ const HeroSection: React.FC = () => {
           {/* Right Column - Social Links */}
           <div className="relative">
             <FloatingElement delay={0.2}>
-              <div className="relative group overflow-hidden bg-white/90 backdrop-blur-xl rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100/50">
+              <div className="relative group overflow-hidden bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100/50 dark:border-gray-700/50">
                 {/* Animated gradient border */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-emerald-600/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-emerald-600/10 to-emerald-500/10 dark:from-emerald-400/20 dark:via-emerald-500/20 dark:to-emerald-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
                   style={{
                     backgroundSize: '200% 100%',
                     animation: 'shimmer 2s linear infinite',
@@ -532,7 +540,7 @@ const HeroSection: React.FC = () => {
                   whileTap={{ scale: 0.98 }}
                 >
                   <motion.div
-                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-400 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur"
+                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-400 to-emerald-500 dark:from-emerald-600 dark:to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur"
                     initial={false}
                     animate={{
                       scale: [1, 1.05, 1],
@@ -543,7 +551,7 @@ const HeroSection: React.FC = () => {
                       ease: "easeInOut"
                     }}
                   />
-                  <div className="relative flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl shadow-lg shadow-emerald-500/25 transition-all duration-300">
+                  <div className="relative flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 dark:from-emerald-600 dark:to-emerald-500 text-white rounded-xl shadow-lg shadow-emerald-500/25 dark:shadow-emerald-500/20 transition-all duration-300">
                     <Sparkles className="w-5 h-5" />
                     <span className="font-semibold">Book Coding Lessons</span>
                     <motion.div
@@ -563,7 +571,7 @@ const HeroSection: React.FC = () => {
                 
                 {/* Limited Spots Text */}
                 <div className="mt-3 text-center">
-                  <span className="text-sm text-emerald-700 font-medium bg-emerald-50/50 px-3 py-1 rounded-full">
+                  <span className="text-sm text-emerald-700 dark:text-emerald-300 font-medium bg-emerald-50/50 dark:bg-emerald-900/50 px-3 py-1 rounded-full">
                     Limited spots available
                   </span>
                 </div>

@@ -52,7 +52,6 @@ const Logo: React.FC<LogoProps> = ({ className = '' }) => {
             fontFamily: 'system-ui, -apple-system, sans-serif'
           }}
         >
-          AMINO
         </text>
       </svg>
     </motion.div>

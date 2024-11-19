@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, LogIn } from 'lucide-react';
 import Image from 'next/image';
+import ThemeToggle from './ThemeToggle';
+import Link from 'next/link';
 
 interface NavItem {
   name: string;
@@ -54,7 +56,7 @@ const Modal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) =>
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50"
+            className="fixed inset-0 backdrop-blur-sm z-50 dark:bg-black/40"
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 10 }}
@@ -76,7 +78,7 @@ const Modal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) =>
                 ease: [0.22, 1, 0.36, 1]
               }
             }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-xl p-6 z-50 w-full max-w-md"
+            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl shadow-xl dark:shadow-emerald-500/10 p-6 z-50 w-full max-w-md border border-gray-200/50 dark:border-gray-800/50 backdrop-blur-xl"
           >
             <div className="relative">
               <motion.button
@@ -84,7 +86,7 @@ const Modal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) =>
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ duration: 0.2 }}
-                className="absolute right-0 top-0 p-2 text-gray-500 hover:text-gray-700"
+                className="absolute right-0 top-0 p-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
               >
                 <X className="w-5 h-5" />
               </motion.button>
@@ -97,7 +99,7 @@ const Modal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) =>
                     stiffness: 260,
                     damping: 20
                   }}
-                  className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-emerald-500 rounded-full mx-auto flex items-center justify-center"
+                  className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-emerald-400 dark:from-emerald-600 dark:to-emerald-400 rounded-full mx-auto flex items-center justify-center"
                 >
                   <LogIn className="w-8 h-8 text-white" />
                 </motion.div>
@@ -106,8 +108,8 @@ const Modal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) =>
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.4 }}
                 >
-                  <h3 className="mt-4 text-xl font-semibold text-gray-900">Coming Soon!</h3>
-                  <p className="mt-2 text-gray-600">
+                  <h3 className="mt-4 text-xl font-semibold text-gray-900 dark:text-white">Coming Soon!</h3>
+                  <p className="mt-2 text-gray-600 dark:text-gray-300">
                     The login feature is currently under development. Stay tuned for updates!
                   </p>
                 </motion.div>
@@ -119,7 +121,7 @@ const Modal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) =>
                     ease: [0.22, 1, 0.36, 1]
                   }}
                   onClick={onClose}
-                  className="mt-6 w-full px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-500 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-600 transition-all duration-300"
+                  className="mt-6 w-full px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-400 dark:from-emerald-600 dark:to-emerald-400 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-500 dark:hover:from-emerald-500 dark:hover:to-emerald-300 transition-all duration-300"
                 >
                   Got it
                 </motion.button>
@@ -183,67 +185,46 @@ const Navbar = () => {
       variants={navVariants}
       initial="hidden"
       animate="visible"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'py-4 bg-white/90 backdrop-blur-md border-b border-gray-100/50 shadow-sm'
-          : 'py-6 bg-transparent'
+          ? 'py-4 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50 shadow-lg dark:shadow-emerald-500/5'
+          : 'py-6 backdrop-blur-sm'
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Image
-              src="/cartoon.png"
-              alt="Fabian Amino"
-              width={40}
-              height={40}
-              className="rounded-full cursor-pointer"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#home');
-              }}
-            />
-          </motion.div>
+        <div className="flex items-center justify-between relative z-50">
+          <Link href="/" className="flex items-center space-x-2">
+            <div className="relative">
+              <Image
+                src="/cartoon.png"
+                alt="Amino"
+                width={40}
+                height={40}
+                className="rounded-full h-10 w-10 dark:border-emerald-400"
+              />
+            </div>
+            <span className="text-lg font-bold bg-gradient-to-r from-emerald-600 to-emerald-500 dark:from-emerald-400 dark:to-emerald-300 bg-clip-text text-transparent">
+              AMINO
+            </span>
+          </Link>
 
           {/* Desktop Menu */}
-          <motion.ul 
-            variants={navVariants}
-            className="hidden md:flex justify-center space-x-1"
-          >
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
-              <motion.li 
-                key={item.name} 
+              <motion.a
+                key={item.name}
+                href={item.href}
                 variants={itemVariants}
+                className="text-gray-600 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400 transition-colors relative group"
               >
-                <a
-                  href={item.href}
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
-                    activeSection === item.href.slice(1)
-                      ? 'text-white bg-gradient-to-r from-emerald-500 to-emerald-500 shadow-lg shadow-emerald-500/20'
-                      : 'text-gray-600 hover:text-emerald-600 hover:bg-emerald-50'
-                  }`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(item.href);
-                  }}
-                >
-                  <motion.span
-                    initial={false}
-                    animate={activeSection === item.href.slice(1) ? {
-                      scale: 1.05,
-                      transition: { duration: 0.2 }
-                    } : { scale: 1 }}
-                  >
-                    {item.name}
-                  </motion.span>
-                </a>
-              </motion.li>
+                {item.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 dark:bg-emerald-400 transition-all duration-300 group-hover:w-full" />
+              </motion.a>
             ))}
-          </motion.ul>
+            <div className="relative z-50">
+              <ThemeToggle />
+            </div>
+          </div>
 
           {/* Login Button */}
           <motion.button
@@ -251,8 +232,9 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsModalOpen(true)}
-            className="hidden md:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-500 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-600 transition-all duration-300 shadow-lg shadow-emerald-500/20 hover:shadow-xl"
+            className="hidden md:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-400 dark:from-emerald-600 dark:to-emerald-400 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-500 dark:hover:from-emerald-500 dark:hover:to-emerald-300 transition-all duration-300 shadow-lg shadow-emerald-500/20 dark:shadow-emerald-500/40 hover:shadow-xl relative group"
           >
+            <div className="absolute inset-0 rounded-lg dark:bg-gradient-to-r dark:from-emerald-400/0 dark:via-emerald-400/20 dark:to-emerald-400/0 dark:opacity-0 dark:group-hover:opacity-100 transition-opacity duration-300" />
             <motion.span
               animate={{ x: [0, 2, 0] }}
               transition={{
@@ -261,10 +243,11 @@ const Navbar = () => {
                 repeatType: "reverse",
                 ease: "easeInOut"
               }}
+              className="relative z-10"
             >
               <LogIn className="w-4 h-4" />
             </motion.span>
-            <span>Login</span>
+            <span className="relative z-10">Login</span>
           </motion.button>
 
           {/* Mobile menu button */}
@@ -273,8 +256,9 @@ const Navbar = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-emerald-50 transition-all duration-300"
+            className="md:hidden p-2 rounded-lg hover:bg-emerald-50/50 dark:hover:bg-emerald-900/30 transition-all duration-300 relative group"
           >
+            <div className="absolute -inset-1 dark:bg-gradient-to-r dark:from-emerald-500/20 dark:via-emerald-500/10 dark:to-purple-500/20 rounded-lg blur-md group-hover:blur-lg transition-all duration-300 opacity-0 dark:opacity-100" />
             <AnimatePresence mode="wait">
               {isOpen ? (
                 <motion.div
@@ -283,8 +267,9 @@ const Navbar = () => {
                   animate={{ rotate: 0, opacity: 1 }}
                   exit={{ rotate: 90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
+                  className="relative z-10"
                 >
-                  <X size={24} className="text-gray-600" />
+                  <X size={24} className="text-gray-600 dark:text-gray-300" />
                 </motion.div>
               ) : (
                 <motion.div
@@ -293,8 +278,9 @@ const Navbar = () => {
                   animate={{ rotate: 0, opacity: 1 }}
                   exit={{ rotate: -90, opacity: 0 }}
                   transition={{ duration: 0.2 }}
+                  className="relative z-10"
                 >
-                  <Menu size={24} className="text-gray-600" />
+                  <Menu size={24} className="text-gray-600 dark:text-gray-300" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -346,7 +332,7 @@ const Navbar = () => {
                     ease: [0.22, 1, 0.36, 1]
                   }
                 }}
-                className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg border border-gray-100/50 overflow-hidden"
+                className="bg-white/80 dark:bg-gray-900/90 dark:bg-gradient-to-b dark:from-gray-900 dark:via-gray-900/95 dark:to-gray-900/75 backdrop-blur-sm rounded-2xl shadow-lg dark:shadow-emerald-500/10 border border-gray-100/50 dark:border-gray-800/50 overflow-hidden"
               >
                 <ul className="py-2 space-y-1">
                   {navItems.map((item, index) => (
@@ -375,8 +361,8 @@ const Navbar = () => {
                         href={item.href}
                         className={`block py-2 px-4 text-sm font-medium transition-all duration-300 ${
                           activeSection === item.href.slice(1)
-                            ? 'bg-gradient-to-r from-emerald-500 to-emerald-500 text-white shadow-md shadow-emerald-500/20'
-                            : 'text-gray-600 hover:bg-emerald-50 hover:text-emerald-600'
+                            ? 'bg-gradient-to-r from-emerald-500 to-emerald-400 dark:from-emerald-600 dark:to-emerald-400 text-white shadow-md shadow-emerald-500/20 dark:shadow-emerald-500/40'
+                            : 'text-gray-600 dark:text-gray-300 hover:bg-emerald-50/50 dark:hover:bg-emerald-900/30 hover:text-emerald-600 dark:hover:text-emerald-400'
                         }`}
                         onClick={(e) => {
                           e.preventDefault();
@@ -407,7 +393,7 @@ const Navbar = () => {
                         setIsOpen(false);
                         setIsModalOpen(true);
                       }}
-                      className="w-full mt-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-500 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-600 transition-all duration-300 shadow-lg shadow-emerald-500/20 hover:shadow-xl flex items-center gap-2 justify-center"
+                      className="w-full mt-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-400 dark:from-emerald-600 dark:to-emerald-400 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-500 dark:hover:from-emerald-500 dark:hover:to-emerald-300 transition-all duration-300 shadow-lg shadow-emerald-500/20 dark:shadow-emerald-500/40 hover:shadow-xl flex items-center gap-2 justify-center"
                     >
                       <motion.span
                         animate={{ x: [0, 2, 0] }}

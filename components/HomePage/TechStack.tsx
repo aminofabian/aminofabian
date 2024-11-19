@@ -90,8 +90,15 @@ function TechList() {
       {techCategories.map((category) => (
         <div key={category.name} className="mb-16">
           <div className="flex items-center gap-3 mb-6">
-            <category.icon className="w-6 h-6 text-emerald-500" />
-            <h3 className="text-xl font-semibold text-emerald-800">{category.name}</h3>
+            <div className="relative inline-flex items-center gap-3 group">
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/80 via-white/40 to-emerald-50/80 dark:from-emerald-900/30 dark:via-gray-800/30 dark:to-emerald-900/30 rounded-lg backdrop-blur-[1px] -z-10 transform transition-all duration-300 group-hover:scale-105"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-transparent dark:from-emerald-400/5 rounded-lg -z-20"></div>
+              {/* Decorative elements */}
+              <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-emerald-500/20 to-transparent rounded-full"></div>
+              <div className="absolute -right-1 top-0 w-6 h-6 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-full blur-sm"></div>
+              <category.icon className="w-6 h-6 text-emerald-500 dark:text-emerald-400 relative z-10" />
+              <h3 className="text-xl font-semibold text-emerald-800 dark:text-emerald-200 relative z-10 px-3 py-1">{category.name}</h3>
+            </div>
           </div>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
@@ -108,14 +115,14 @@ function TechList() {
                   
                   {/* Content */}
                   <div 
-                    className="relative bg-white p-4 rounded-lg transform transition-all duration-700"
+                    className="relative p-4 rounded-lg transform transition-all duration-700 dark:text-white"
                     style={{
                       clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
                     }}
                   >
                     <div className="flex flex-col items-center justify-center gap-2 py-2">
                       <skill.icon className={`w-8 h-8 ${skill.color} group-hover:scale-105 transition-transform duration-700`} />
-                      <span className="text-sm font-medium text-gray-700 text-center whitespace-nowrap opacity-90 group-hover:opacity-100 transition-opacity duration-700">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300 text-center whitespace-nowrap opacity-90 group-hover:opacity-100 transition-opacity duration-700">
                         {skill.name}
                       </span>
                     </div>
@@ -133,20 +140,34 @@ function TechList() {
 const TechStack: React.FC = () => {
   return (
     <div className="relative z-30 w-full max-w-7xl mx-auto px-4 py-16">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-emerald-900 mb-4">
-          Tech Stack
-        </h2>
-        <p className="text-lg text-emerald-700 opacity-80">
-          Technologies I work with to bring ideas to life
-        </p>
+      <div className="text-center mb-16 relative">
+        <div className="relative z-10 space-y-4 inline-flex flex-col items-center">
+          <div className="relative inline-block">
+            <h2 className="text-4xl font-bold text-emerald-900 dark:text-emerald-100 mb-4 relative">
+              <span className="relative z-10 px-6 py-2 inline-block">Tech Stack</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/90 via-white/60 to-emerald-50/90 dark:from-emerald-900/40 dark:via-gray-800/40 dark:to-emerald-900/40 rounded-lg backdrop-blur-[2px] border border-emerald-100/20 dark:border-emerald-500/10"></div>
+              {/* Decorative dots */}
+              <div className="absolute -right-2 -top-2 w-2 h-2 bg-emerald-400/40 rounded-full"></div>
+              <div className="absolute -left-2 -bottom-2 w-2 h-2 bg-emerald-400/40 rounded-full"></div>
+            </h2>
+          </div>
+          
+          <div className="relative inline-block">
+            <p className="text-lg text-emerald-700 dark:text-emerald-300">
+              <span className="relative z-10 px-4 py-2 inline-block">Technologies I work with to bring ideas to life</span>
+              <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-emerald-50/30 to-white/50 dark:from-gray-800/50 dark:via-emerald-900/20 dark:to-gray-800/50 rounded-lg backdrop-blur-[1px] border border-emerald-100/10 dark:border-emerald-500/5"></div>
+              {/* Decorative line */}
+              <div className="absolute left-1/2 -bottom-2 w-16 h-0.5 bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent transform -translate-x-1/2"></div>
+            </p>
+          </div>
+        </div>
       </div>
       
       <div className="relative">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-100/30 dark:bg-emerald-900/30 rounded-full mix-blend-multiply filter blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-200/30 dark:bg-emerald-800/30 rounded-full mix-blend-multiply filter blur-3xl" />
         </div>
         
         <TechList />

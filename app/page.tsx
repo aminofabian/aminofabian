@@ -66,16 +66,52 @@ export default function HomePage(): JSX.Element {
     <main className="relative min-h-screen w-full overflow-x-hidden">
       {/* Shared background pattern */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-white">
+        <div className="absolute inset-0 bg-gradient-to-br from-background to-background dark:from-gray-950 dark:to-gray-900">
+          {/* Grid lines */}
           <div className="absolute inset-0" style={{
             backgroundImage: `
-              linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 3px),
-              linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 3px)
+              linear-gradient(to right, var(--grid-line-color) 1.5px, transparent 1.5px),
+              linear-gradient(to bottom, var(--grid-line-color) 1.5px, transparent 1.5px)
             `,
             backgroundSize: '40px 40px',
-            mask: 'radial-gradient(circle at center, emerald 20%, transparent 80%)'
+            mask: 'radial-gradient(circle at center, var(--mask-color) 20%, transparent 80%)'
           }} />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.08)_0%,_transparent_70%)]" />
+
+          {/* Hexagonal pattern */}
+          <div className="absolute inset-0 opacity-[0.12] dark:opacity-[0.15]" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' stroke-width='3' stroke='%2310B981' fill='none' opacity='.3'/%3E%3C/svg%3E")`,
+            backgroundSize: '80px 80px'
+          }} />
+
+          {/* Diagonal pattern */}
+          <div className="absolute inset-0 opacity-[0.08] dark:opacity-[0.12]" style={{
+            backgroundImage: `
+              linear-gradient(45deg, var(--pattern-color) 25%, transparent 25%),
+              linear-gradient(-45deg, var(--pattern-color) 25%, transparent 25%)
+            `,
+            backgroundSize: '80px 80px',
+            backgroundPosition: '0 0, 40px 0'
+          }} />
+
+          {/* Dotted overlay */}
+          <div className="absolute inset-0 opacity-[0.08] dark:opacity-[0.1]" style={{
+            backgroundImage: `
+              radial-gradient(var(--pattern-color) 2.5px, transparent 2.5px),
+              radial-gradient(var(--pattern-color) 2.5px, transparent 2.5px)
+            `,
+            backgroundSize: '40px 40px',
+            backgroundPosition: '0 0, 20px 20px'
+          }} />
+
+          {/* Ambient glow */}
+          <div className="absolute inset-0">
+            {/* Top right glow */}
+            <div className="absolute -top-24 -right-24 w-[600px] h-[600px] bg-primary/15 dark:bg-primary/10 rounded-full blur-3xl" />
+            {/* Bottom left glow */}
+            <div className="absolute -bottom-24 -left-24 w-[600px] h-[600px] bg-primary/15 dark:bg-primary/10 rounded-full blur-3xl" />
+            {/* Center glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 dark:bg-primary/5 rounded-full blur-3xl" />
+          </div>
         </div>
       </div>
 

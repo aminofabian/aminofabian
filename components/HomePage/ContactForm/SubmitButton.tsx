@@ -14,10 +14,10 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ isSubmitting, isDisabled })
       <button
         type="submit"
         disabled={isSubmitting || isDisabled}
-        className="w-full px-6 py-3 bg-emerald-500 hover:bg-emerald-600 
+        className="w-full px-6 py-3 bg-emerald-500 dark:bg-emerald-600 hover:bg-emerald-600 dark:hover:bg-emerald-500 
         text-white font-medium rounded-lg shadow-sm
-        focus:outline-none focus:ring-2 focus:ring-emerald-500/20
-        disabled:opacity-50 disabled:cursor-not-allowed
+        focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:focus:ring-emerald-400/20
+        disabled:opacity-50 dark:disabled:opacity-40 disabled:cursor-not-allowed
         transition-all duration-200 ease-out"
       >
         {isSubmitting ? (

@@ -124,7 +124,7 @@ const WorkflowSection = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <motion.h2 
-            className="text-4xl font-bold text-gray-900 mb-4"
+            className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -132,7 +132,7 @@ const WorkflowSection = () => {
             My Development Workflow
           </motion.h2>
           <motion.p 
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
+            className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -166,7 +166,7 @@ const WorkflowSection = () => {
           {workflowSteps.map((step, index) => (
             <motion.div
               key={`desktop-${step.title}`}
-              className="absolute w-64 bg-white rounded-xl shadow-lg p-4 transform -translate-x-1/2 -translate-y-1/2 hover:shadow-xl transition-shadow"
+              className="absolute w-64 rounded-xl shadow-lg dark:shadow-emerald-500/5 p-4 transform -translate-x-1/2 -translate-y-1/2 hover:shadow-xl transition-shadow"
               style={{
                 left: `${step.position.x}%`,
                 top: `${step.position.y}%`,
@@ -176,26 +176,26 @@ const WorkflowSection = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <div className="flex items-center mb-2">
-                <div className="relative p-2 bg-emerald-100 rounded-lg mr-3">
-                  {<step.icon className="w-5 h-5 text-emerald-600" />}
-                  <div className="absolute -top-2 -left-2 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                <div className="relative p-2 bg-emerald-100 dark:bg-emerald-900/50 rounded-lg mr-3">
+                  {<step.icon className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />}
+                  <div className="absolute -top-2 -left-2 w-5 h-5 bg-emerald-500 dark:bg-emerald-400 rounded-full flex items-center justify-center text-white text-xs font-bold">
                     {step.step}
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900">{step.title}</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{step.title}</h3>
               </div>
-              <p className="text-sm text-gray-600 mb-2">{step.description}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{step.description}</p>
               
               <ul className="space-y-1">
                 {step.details.map((detail, detailIndex) => (
                   <motion.li 
                     key={detailIndex}
-                    className="flex items-start text-xs text-gray-600"
+                    className="flex items-start text-xs text-gray-600 dark:text-gray-300"
                     initial={{ opacity: 0, x: -10 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.3, delay: (index * 0.1) + (detailIndex * 0.1) }}
                   >
-                    <CheckCircle2 className="w-3 h-3 text-emerald-500 mr-1 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-3 h-3 text-emerald-500 dark:text-emerald-400 mr-1 mt-0.5 flex-shrink-0" />
                     <span>{detail}</span>
                   </motion.li>
                 ))}
@@ -209,40 +209,40 @@ const WorkflowSection = () => {
           {workflowSteps.map((step, index) => (
             <motion.div
               key={`mobile-${step.title}`}
-              className="relative bg-white rounded-xl shadow-lg p-6"
+              className="relative rounded-xl shadow-lg dark:shadow-emerald-500/5 p-6"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               {/* Connecting Line */}
               {index < workflowSteps.length - 1 && (
-                <div className="absolute left-1/2 bottom-0 w-0.5 h-4 bg-emerald-500 transform translate-x-[-50%] translate-y-full" />
+                <div className="absolute left-1/2 bottom-0 w-0.5 h-4 bg-emerald-500 dark:bg-emerald-400 transform translate-x-[-50%] translate-y-full" />
               )}
               
               <div className="flex items-start gap-4">
                 <div className="relative flex-shrink-0">
-                  <div className="p-3 bg-emerald-100 rounded-lg">
-                    {<step.icon className="w-6 h-6 text-emerald-600" />}
+                  <div className="p-3 bg-emerald-100 dark:bg-emerald-900/50 rounded-lg">
+                    {<step.icon className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />}
                   </div>
-                  <div className="absolute -top-2 -left-2 w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                  <div className="absolute -top-2 -left-2 w-6 h-6 bg-emerald-500 dark:bg-emerald-400 rounded-full flex items-center justify-center text-white text-sm font-bold">
                     {step.step}
                   </div>
                 </div>
                 
                 <div className="flex-grow">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
-                  <p className="text-gray-600 mb-4">{step.description}</p>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{step.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">{step.description}</p>
                   
                   <ul className="space-y-2">
                     {step.details.map((detail, detailIndex) => (
                       <motion.li 
                         key={detailIndex}
-                        className="flex items-start text-sm text-gray-600"
+                        className="flex items-start text-sm text-gray-600 dark:text-gray-300"
                         initial={{ opacity: 0, x: -10 }}
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.3, delay: (index * 0.1) + (detailIndex * 0.1) }}
                       >
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500 mr-2 mt-0.5 flex-shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 mr-2 mt-0.5 flex-shrink-0" />
                         <span>{detail}</span>
                       </motion.li>
                     ))}
@@ -259,11 +259,11 @@ const WorkflowSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <h3 className="text-2xl font-semibold text-gray-900 mb-4">Ready to Start Your Project?</h3>
-          <p className="text-gray-600 mb-6">Here&apos;s how I bring your ideas to life</p>
+          <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Ready to Start Your Project?</h3>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">Here&apos;s how I bring your ideas to life</p>
           <a 
             href="#contact" 
-            className="inline-flex items-center px-6 py-3 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+            className="inline-flex items-center px-6 py-3 bg-emerald-500 hover:bg-emerald-600 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white rounded-lg transition-colors"
           >
             <HeartHandshake className="w-5 h-5 mr-2" />
             Get in Touch

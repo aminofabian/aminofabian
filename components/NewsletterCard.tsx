@@ -56,14 +56,14 @@ const NewsletterCard = () => {
         >
           <div className="relative">
             {/* Background blur effect */}
-            <div className="absolute inset-0 bg-white/10 backdrop-blur-xl rounded-2xl" />
+            <div className="absolute inset-0 bg-white/10 dark:bg-gray-900/30 backdrop-blur-xl rounded-2xl" />
             
             {/* Main content */}
-            <div className={`relative bg-gradient-to-br from-white/5 to-white/10 border border-white/20 p-6 rounded-2xl shadow-xl w-80 ${isClosing ? 'pointer-events-none' : ''}`}>
+            <div className={`relative bg-gradient-to-br from-white/5 to-white/10 dark:from-gray-800/50 dark:to-gray-900/50 border border-white/20 dark:border-emerald-900/20 p-6 rounded-2xl shadow-xl w-80 ${isClosing ? 'pointer-events-none' : ''}`}>
               {/* Close button */}
               <motion.button
                 onClick={handleClose}
-                className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition-colors p-2 hover:bg-white/10 rounded-full group"
+                className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors p-2 hover:bg-white/10 dark:hover:bg-gray-800/30 rounded-full group"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -75,12 +75,12 @@ const NewsletterCard = () => {
                 <>
                   {/* Header */}
                   <div className="flex items-center gap-2 mb-4">
-                    <Sparkles className="w-5 h-5 text-emerald-500" />
-                    <h3 className="text-lg font-semibold text-white">Stay Updated</h3>
+                    <Sparkles className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Stay Updated</h3>
                   </div>
 
                   {/* Description */}
-                  <p className="text-sm text-gray-300 mb-4">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
                     Get weekly insights on web development, creative coding, and tech innovations.
                   </p>
 
@@ -93,13 +93,13 @@ const NewsletterCard = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="your@email.com"
                         required
-                        className="w-full px-4 py-2 bg-white/5 border border-emerald-600/10 rounded-lg text-emerald-700 placeholder-gray-400 text-xm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all"
+                        className="w-full px-4 py-2 bg-white/5 dark:bg-gray-800/30 border border-emerald-600/10 dark:border-emerald-500/20 rounded-lg text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 dark:focus:ring-emerald-400/50 transition-all"
                       />
                     </div>
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg text-sm font-medium hover:from-emerald-600 hover:to-emerald-700 transition-all disabled:opacity-50"
+                      className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 dark:from-emerald-600 dark:to-emerald-500 text-white rounded-lg text-sm font-medium hover:from-emerald-600 hover:to-emerald-700 dark:hover:from-emerald-500 dark:hover:to-emerald-400 transition-all disabled:opacity-50"
                     >
                       {isLoading ? (
                         <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -115,18 +115,18 @@ const NewsletterCard = () => {
               ) : (
                 <div className="py-2">
                   <div className="flex items-center gap-2 mb-3">
-                    <CheckCircle className="w-5 h-5 text-emerald-500" />
-                    <h3 className="text-lg font-semibold text-white">Thank You!</h3>
+                    <CheckCircle className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Thank You!</h3>
                   </div>
-                  <p className="text-sm text-gray-300">
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
                     You've been successfully subscribed to our newsletter.
                   </p>
                 </div>
               )}
 
               {/* Decorative elements */}
-              <div className="absolute -top-10 -right-10 w-20 h-20 bg-emerald-500/10 rounded-full blur-xl animate-pulse" />
-              <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-emerald-500/10 rounded-full blur-xl animate-pulse" />
+              <div className="absolute -top-10 -right-10 w-20 h-20 bg-emerald-500/10 dark:bg-emerald-400/10 rounded-full blur-xl animate-pulse" />
+              <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-emerald-500/10 dark:bg-emerald-400/10 rounded-full blur-xl animate-pulse" />
             </div>
           </div>
         </motion.div>

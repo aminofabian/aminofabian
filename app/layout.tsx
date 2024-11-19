@@ -1,6 +1,7 @@
 import { Jost } from 'next/font/google';
 import './globals.css';
 import { Metadata } from 'next';
+import { ThemeProvider } from '@/context/ThemeContext';
 
 const inter = Jost({ subsets: ['latin'] });
 
@@ -59,14 +60,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#059669" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/icon-192x192.png" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} min-h-screen bg-background text-foreground antialiased`}>
+        <div className="relative min-h-screen overflow-hidden">
+          {/* Background decorative elements */}
+          <div className="fixed inset-0 pointer-events-none">
+            {/* Top right glow */}
+            <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+            {/* Bottom left glow */}
+            <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+            {/* Center ambient light */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-b from-transparent via-primary/2 to-transparent"></div>
+          </div>
+          
+          {/* Content */}
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
+        </div>
+      </body>
     </html>
   );
 }

@@ -148,7 +148,7 @@ const PortfolioLinks = () => {
           key={i}
           onClick={() => handlePageChange(i)}
           className={`px-3 py-1 rounded-md ${
-            currentPage === i ? 'bg-emerald-500 text-white' : 'text-gray-600'
+            currentPage === i ? 'bg-emerald-500 text-white' : 'text-gray-600 dark:text-gray-300'
           }`}
         >
           {i}
@@ -167,8 +167,8 @@ const PortfolioLinks = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
-          <p className="text-lg text-gray-600">Let&apos;s explore some of my recent projects</p>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Featured Projects</h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300">Let&apos;s explore some of my recent projects</p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -183,8 +183,8 @@ const PortfolioLinks = () => {
               onClick={() => setSelectedCategory('all')}
               className={`w-full text-left px-6 py-4 rounded-xl transition-all duration-200
                 ${selectedCategory === 'all' 
-                  ? 'bg-emerald-500 text-white shadow-lg' 
-                  : 'bg-gray-50 text-gray-700 hover:bg-gray-100'}`}
+                  ? 'bg-emerald-500 text-white shadow-lg dark:bg-emerald-600' 
+                  : 'bg-gray-50 dark:bg-gray-800/40 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700/50 backdrop-blur-sm'}`}
             >
               <div className="flex items-center space-x-3">
                 <HiColorSwatch className="w-5 h-5" />
@@ -195,8 +195,8 @@ const PortfolioLinks = () => {
               onClick={() => setSelectedCategory('webapp')}
               className={`w-full text-left px-6 py-4 rounded-xl transition-all duration-200
                 ${selectedCategory === 'webapp' 
-                  ? 'bg-emerald-500 text-white shadow-lg' 
-                  : 'bg-gray-50 text-gray-700 hover:bg-gray-100'}`}
+                  ? 'bg-emerald-500 text-white shadow-lg dark:bg-emerald-600' 
+                  : 'bg-gray-50 dark:bg-gray-800/40 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700/50 backdrop-blur-sm'}`}
             >
               <div className="flex items-center space-x-3">
                 <HiCode className="w-5 h-5" />
@@ -207,8 +207,8 @@ const PortfolioLinks = () => {
               onClick={() => setSelectedCategory('wordpress')}
               className={`w-full text-left px-6 py-4 rounded-xl transition-all duration-200
                 ${selectedCategory === 'wordpress' 
-                  ? 'bg-emerald-500 text-white shadow-lg' 
-                  : 'bg-gray-50 text-gray-700 hover:bg-gray-100'}`}
+                  ? 'bg-emerald-500 text-white shadow-lg dark:bg-emerald-600' 
+                  : 'bg-gray-50 dark:bg-gray-800/40 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700/50 backdrop-blur-sm'}`}
             >
               <div className="flex items-center space-x-3">
                 <HiColorSwatch className="w-5 h-5" />
@@ -217,7 +217,7 @@ const PortfolioLinks = () => {
             </button>
 
             {/* Animated Text and Image Section */}
-            <div className="mt-16 pt-8 border-t border-gray-100 relative">
+            <div className="mt-16 pt-8 border-t border-gray-100 dark:border-gray-800 relative">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ 
@@ -242,10 +242,10 @@ const PortfolioLinks = () => {
                 
                 {/* Speech bubble container */}
                 <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4">
-                  <div className="relative bg-white p-4 rounded-lg shadow-md min-w-[200px]">
+                  <div className="relative bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md min-w-[200px]">
                     {/* Speech bubble pointer */}
                     <div className="absolute bottom-0 left-6 transform translate-y-full">
-                      <div className="w-4 h-4 bg-white transform rotate-45" />
+                      <div className="w-4 h-4 bg-white dark:bg-gray-800 transform rotate-45" />
                     </div>
                     
                     {/* Animated text container */}
@@ -257,7 +257,7 @@ const PortfolioLinks = () => {
                           opacity: textPhase >= 1 && textPhase < 2 ? 1 : 0 
                         }}
                         transition={{ duration: 0.8 }}
-                        className="absolute inset-0 flex items-center text-gray-600"
+                        className="absolute inset-0 flex items-center text-gray-600 dark:text-gray-300"
                       >
                         Lemme think...
                       </motion.div>
@@ -268,7 +268,7 @@ const PortfolioLinks = () => {
                           opacity: textPhase >= 2 && textPhase < 3 ? 1 : 0 
                         }}
                         transition={{ duration: 2.0 }}
-                        className="absolute inset-0 flex items-center text-gray-600"
+                        className="absolute inset-0 flex items-center text-gray-600 dark:text-gray-300"
                       >
                         ...of any disappointed client...
                       </motion.div>
@@ -279,7 +279,7 @@ const PortfolioLinks = () => {
                           opacity: textPhase >= 3 ? 1 : 0 
                         }}
                         transition={{ duration: 1 }}
-                        className="absolute inset-0 flex items-center text-emerald-600 font-bold"
+                        className="absolute inset-0 flex items-center text-emerald-600 dark:text-emerald-400 font-bold"
                       >
                         <motion.span
                           initial={{ scale: 0.8 }}
@@ -314,7 +314,7 @@ const PortfolioLinks = () => {
                 href={site.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 group"
+                className="block px-6 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors duration-200 group backdrop-blur-sm"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -334,21 +334,21 @@ const PortfolioLinks = () => {
                       className="relative"
                     >
                       {/* Background circle */}
-                      <div className="absolute inset-0 bg-emerald-100/0 rounded-full transform group-hover:bg-emerald-100/50 transition-all duration-300" />
+                      <div className="absolute inset-0 bg-emerald-100/0 dark:bg-emerald-900/0 rounded-full transform group-hover:bg-emerald-100/50 dark:group-hover:bg-emerald-800/30 transition-all duration-300" />
                       
                       {/* Number */}
                       <div className="relative px-2 py-1">
-                        <span className="text-lg font-semibold bg-gradient-to-br from-emerald-600 to-emerald-400 bg-clip-text text-transparent group-hover:from-emerald-500 group-hover:to-emerald-300 transition-all duration-300">
+                        <span className="text-lg font-semibold bg-gradient-to-br from-emerald-600 to-emerald-400 dark:from-emerald-400 dark:to-emerald-300 bg-clip-text text-transparent group-hover:from-emerald-500 group-hover:to-emerald-300 dark:group-hover:from-emerald-300 dark:group-hover:to-emerald-200 transition-all duration-300">
                           {String(index + 1).padStart(2, '0')}
                         </span>
                       </div>
                     </motion.div>
                     
-                    <span className="text-gray-900 font-medium group-hover:text-emerald-600 transition-colors">
+                    <span className="text-gray-900 dark:text-gray-100 font-medium group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                       {site.name}
                     </span>
                   </div>
-                  <FiExternalLink className="w-4 h-4 text-gray-500 group-hover:text-emerald-500 transition-colors" />
+                  <FiExternalLink className="w-4 h-4 text-gray-500 dark:text-gray-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors" />
                 </div>
               </motion.a>
             ))}
@@ -369,15 +369,15 @@ const PortfolioLinks = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-emerald-50 p-6 rounded-xl"
+                  className="bg-emerald-50 dark:bg-gray-800/40 p-6 rounded-xl backdrop-blur-sm"
                 >
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{site.name}</h3>
-                  <p className="text-gray-600 mb-4">{site.description}</p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">{site.name}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">{site.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {site.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-grey-100 text-grey-600 rounded-full text-xs font-italic cursor-pointer hover:bg-grey-200 transition-colors duration-200"
+                        className="px-3 py-1 bg-grey-100 dark:bg-gray-700/50 text-grey-600 dark:text-gray-300 rounded-full text-xs font-italic cursor-pointer hover:bg-grey-200 dark:hover:bg-gray-600/50 transition-colors duration-200 backdrop-blur-sm"
                       >
                         {tech}
                       </span>
@@ -395,9 +395,8 @@ const PortfolioLinks = () => {
                 className={`
                   w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200
                   ${currentPage === 1 
-                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
-                    : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
-                  }
+                    ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed' 
+                    : 'bg-gray-50 dark:bg-gray-800/40 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/50 backdrop-blur-sm'}
                 `}
               >
                 <FiChevronLeft className="w-4 h-4" />
@@ -411,9 +410,8 @@ const PortfolioLinks = () => {
                 className={`
                   w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200
                   ${currentPage === totalPages 
-                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
-                    : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
-                  }
+                    ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed' 
+                    : 'bg-gray-50 dark:bg-gray-800/40 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/50 backdrop-blur-sm'}
                 `}
               >
                 <FiChevronRight className="w-4 h-4" />

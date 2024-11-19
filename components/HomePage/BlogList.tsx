@@ -94,20 +94,20 @@ const BlogCard: React.FC<{ post: BlogPost; index: number }> = ({ post, index }) 
             scale: isHovered ? 1.1 : 1,
             rotate: isHovered ? -5 : 0,
           }}
-          className="absolute -top-2 -right-2 w-12 h-12 bg-emerald-400/20 rounded-full blur-xl"
+          className="absolute -top-2 -right-2 w-12 h-12 bg-emerald-400/20 dark:bg-emerald-400/20 rounded-full blur-xl"
         />
         <motion.div
           animate={{
             scale: isHovered ? 1.2 : 1,
             rotate: isHovered ? 5 : 0,
           }}
-          className="absolute -bottom-2 -left-2 w-16 h-16 bg-emerald-600/20 rounded-full blur-xl"
+          className="absolute -bottom-2 -left-2 w-16 h-16 bg-emerald-600/20 dark:bg-emerald-600/20 rounded-full blur-xl"
         />
 
         {/* Main Card */}
-        <div className="relative  backdrop-blur-xl rounded-2xl p-6 border border-emerald-50/20 shadow-lg shadow-emerald-500/5 overflow-hidden">
+        <div className="relative backdrop-blur-xl rounded-2xl p-6 border border-emerald-50/20 dark:border-emerald-950/20 shadow-lg shadow-emerald-500/5 overflow-hidden">
           {/* Background Pattern */}
-          <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+          <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-10" />
           
           {/* Image Container */}
           <div className="relative h-48 mb-6 rounded-xl overflow-hidden">
@@ -127,13 +127,13 @@ const BlogCard: React.FC<{ post: BlogPost; index: number }> = ({ post, index }) 
               {/* Date Container */}
               <div className="relative group">
                 <div className="absolute inset-0 rounded-lg transform group-hover:scale-105 transition-transform duration-300" />
-                <div className="relative flex items-center gap-2 px-3 py-1.5 rounded-lg border border-gray-200">
-                  <div className="absolute -top-0.5 -left-0.5 w-1.5 h-1.5 bg-gray-200 rounded-full" />
-                  <div className="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 bg-gray-200 rounded-full" />
-                  <div className="relative p-1 bg-gray-50 rounded-full">
-                    <Calendar size={12} className="text-gray-500" strokeWidth={2.5} />
+                <div className="relative flex items-center gap-2 px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-800">
+                  <div className="absolute -top-0.5 -left-0.5 w-1.5 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full" />
+                  <div className="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full" />
+                  <div className="relative p-1 bg-gray-50 dark:bg-gray-900 rounded-full">
+                    <Calendar size={12} className="text-gray-500 dark:text-gray-400" strokeWidth={2.5} />
                   </div>
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
                     {post.date}
                   </span>
                 </div>
@@ -142,13 +142,13 @@ const BlogCard: React.FC<{ post: BlogPost; index: number }> = ({ post, index }) 
               {/* Read Time Container */}
               <div className="relative group">
                 <div className="absolute inset-0 rounded-lg transform group-hover:scale-105 transition-transform duration-300" />
-                <div className="relative flex items-center gap-2 px-3 py-1.5 rounded-lg border border-gray-200">
-                  <div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-gray-200 rounded-full" />
-                  <div className="absolute -bottom-0.5 -left-0.5 w-1.5 h-1.5 bg-gray-200 rounded-full" />
-                  <div className="relative p-1 bg-gray-50 rounded-full">
-                    <Clock size={12} className="text-gray-500" strokeWidth={2.5} />
+                <div className="relative flex items-center gap-2 px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-800">
+                  <div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full" />
+                  <div className="absolute -bottom-0.5 -left-0.5 w-1.5 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full" />
+                  <div className="relative p-1 bg-gray-50 dark:bg-gray-900 rounded-full">
+                    <Clock size={12} className="text-gray-500 dark:text-gray-400" strokeWidth={2.5} />
                   </div>
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
                     {post.readTime}
                   </span>
                 </div>
@@ -164,7 +164,7 @@ const BlogCard: React.FC<{ post: BlogPost; index: number }> = ({ post, index }) 
                   repeat: Infinity,
                   ease: "linear"
                 }}
-                className="absolute -right-1 -top-1 w-6 h-6 border border-dashed border-gray-200 rounded-full"
+                className="absolute -right-1 -top-1 w-6 h-6 border border-dashed border-gray-200 dark:border-gray-800 rounded-full"
               />
               <motion.div
                 animate={{
@@ -175,7 +175,7 @@ const BlogCard: React.FC<{ post: BlogPost; index: number }> = ({ post, index }) 
                   repeat: Infinity,
                   ease: "linear"
                 }}
-                className="absolute -left-1 -bottom-1 w-4 h-4 border border-dotted border-gray-200 rounded-full"
+                className="absolute -left-1 -bottom-1 w-4 h-4 border border-dotted border-gray-200 dark:border-gray-800 rounded-full"
               />
             </div>
 
@@ -187,7 +187,7 @@ const BlogCard: React.FC<{ post: BlogPost; index: number }> = ({ post, index }) 
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.1 }}
-                  className="px-3 py-1 text-xs font-xs text-emerald-600 bg-emerald-50/80 backdrop-blur-sm rounded-full border border-emerald-100/50 group-hover:bg-emerald-100/80 transition-all duration-300 hover:scale-105"
+                  className="px-3 py-1 text-xs font-xs text-emerald-600 dark:text-emerald-400 backdrop-blur-sm rounded-full border border-emerald-100/50 dark:border-emerald-800/50 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-all duration-300 hover:scale-105"
                 >
                   {tag}
                 </motion.span>
@@ -195,18 +195,18 @@ const BlogCard: React.FC<{ post: BlogPost; index: number }> = ({ post, index }) 
             </div>
 
             {/* Title */}
-            <h3 className="text-xl font-light text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors duration-300">
+            <h3 className="text-xl font-light text-gray-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
               {post.title}
             </h3>
 
             {/* Description */}
-            <p className="text-gray-600/90 text-sm mb-4 line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
+            <p className="text-gray-600/90 dark:text-gray-300 text-sm mb-4 line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
               {post.description}
             </p>
 
             {/* Read More Link */}
             <motion.div 
-              className="flex items-center text-emerald-600 font-xs"
+              className="flex items-center text-emerald-600 dark:text-emerald-400 font-xs"
               animate={{ x: isHovered ? 5 : 0 }}
             >
               <span>Read More</span>
@@ -237,10 +237,10 @@ const BlogList: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-16"
       >
-        <h2 className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-emerald-400 bg-clip-text text-transparent mb-4">
+        <h2 className="text-4xl font-bold text-emerald-900 dark:text-white mb-4">
           Latest Articles
         </h2>
-        <p className="text-lg text-gray-600/80">
+        <p className="text-lg text-gray-600/80 dark:text-gray-300">
           Insights and tutorials about modern web development
         </p>
       </motion.div>
@@ -270,7 +270,7 @@ const BlogList: React.FC = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={prevPage}
-              className="p-2 rounded-full bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition-colors"
+              className="p-2 rounded-full text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
             >
               <ChevronLeft size={24} />
             </motion.button>
@@ -278,7 +278,7 @@ const BlogList: React.FC = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={nextPage}
-              className="p-2 rounded-full bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition-colors"
+              className="p-2 rounded-full text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
             >
               <ChevronRight size={24} />
             </motion.button>

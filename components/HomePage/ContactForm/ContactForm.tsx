@@ -43,18 +43,19 @@ const ContactForm: React.FC<ContactFormProps> = ({
       onSubmit={onSubmit}
       className="w-full max-w-lg mx-auto p-6 relative overflow-hidden
         bg-gradient-to-br from-emerald-50 via-white to-emerald-50
-        shadow-lg rounded-2xl border border-emerald-100/30"
+        dark:from-gray-800/80 dark:via-gray-800/60 dark:to-gray-800/80
+        shadow-lg rounded-2xl border border-emerald-100/30 dark:border-emerald-600/10"
     >
       {/* Gradient Overlays */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(16,185,129,0.1),transparent_50%)] opacity-70" />
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.8),rgba(255,255,255,0.4))] backdrop-blur-[2px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(16,185,129,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_120%,rgba(16,185,129,0.15),transparent_50%)] opacity-70" />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.8),rgba(255,255,255,0.4))] dark:bg-[linear-gradient(135deg,rgba(30,41,59,0.4),rgba(30,41,59,0.2))] backdrop-blur-[2px]" />
       
       {/* Pattern Overlay */}
       <div className="absolute inset-0">
-        <svg className="w-full h-full opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
+        <svg className="w-full h-full opacity-[0.05] dark:opacity-[0.08]" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="dotPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1" fill="#10B981"/>
+              <circle cx="2" cy="2" r="1" className="fill-emerald-600 dark:fill-emerald-400"/>
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#dotPattern)" />
