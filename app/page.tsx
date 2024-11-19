@@ -43,7 +43,7 @@ const {
     loading: () => <div className="min-h-screen flex items-center justify-center">Loading workflow section...</div>,
     ssr: false,
   }),
-  DynamicIdeContactForm: dynamic(() => import('@/components/HomePage/IdeContactForm'), {
+  DynamicIdeContactForm: dynamic(() => import('@/components/HomePage/ContactForm/IdeContactForm'), {
     loading: () => <div className="w-full h-96 flex items-center justify-center">Loading contact form...</div>,
     ssr: false,
   }),

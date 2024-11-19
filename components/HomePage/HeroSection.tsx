@@ -5,7 +5,7 @@ import { Briefcase, Terminal, ExternalLink, Code2, Sparkles, ArrowRight, ArrowLe
 import Image from 'next/image';
 import SocialLinks from './SocialLinks';
 import HireMeModal from './HireMeModal';
-import IdeContactForm from './IdeContactForm';
+import IdeContactForm from './ContactForm/IdeContactForm';
 import {
   SiTypescript, SiJavascript, SiReact, SiNextdotjs,
   SiTailwindcss, SiNodedotjs, SiPython, SiGit,

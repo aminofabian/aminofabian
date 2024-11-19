@@ -17,7 +17,7 @@ export const DynamicWorkflowSection = dynamic(() => import('@/components/HomePag
   ssr: true
 });
 
-export const DynamicIdeContactForm = dynamic(() => import('@/components/HomePage/IdeContactForm'), {
+export const DynamicIdeContactForm = dynamic(() => import('@/components/HomePage/ContactForm/IdeContactForm'), {
   loading: () => null,
   ssr: false
 });
