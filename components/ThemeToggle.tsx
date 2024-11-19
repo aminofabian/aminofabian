@@ -2,7 +2,7 @@
 
 import { useTheme } from '@/context/ThemeContext';
 import { HiMoon, HiSun } from 'react-icons/hi';
-import { FaStars, FaCloud } from 'react-icons/fa';
+import { FaStar, FaCloud } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ThemeToggle() {
