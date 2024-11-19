@@ -103,11 +103,11 @@ function TechList() {
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {category.skills.map((skill) => (
-              <div key={skill.name} className="group">
+              <div key={skill.name} className="group cursor-pointer">
                 <div className="relative">
                   {/* Hexagon background */}
                   <div 
-                    className="absolute -inset-[2px] bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-lg opacity-40 group-hover:opacity-80 transition-all duration-700" 
+                    className="absolute -inset-[2px] bg-gradient-to-r from-emerald-600/20 to-emerald-400/20 dark:from-emerald-600/30 dark:to-emerald-400/30 rounded-lg group-hover:from-emerald-600/30 group-hover:to-emerald-400/30 dark:group-hover:from-emerald-600/40 dark:group-hover:to-emerald-400/40 transition-all duration-300" 
                     style={{
                       clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
                     }}
@@ -115,14 +115,14 @@ function TechList() {
                   
                   {/* Content */}
                   <div 
-                    className="relative p-4 rounded-lg transform transition-all duration-700 dark:text-white"
+                    className="relative p-4 rounded-lg transform transition-all duration-300"
                     style={{
                       clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
                     }}
                   >
                     <div className="flex flex-col items-center justify-center gap-2 py-2">
-                      <skill.icon className={`w-8 h-8 ${skill.color} group-hover:scale-105 transition-transform duration-700`} />
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300 text-center whitespace-nowrap opacity-90 group-hover:opacity-100 transition-opacity duration-700">
+                      <skill.icon className={`w-8 h-8 ${skill.color} group-hover:scale-110 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-all duration-300`} />
+                      <span className="text-xs font-semibold tracking-wide text-gray-800 dark:text-gray-200 text-center whitespace-nowrap antialiased group-hover:text-emerald-600 dark:group-hover:text-emerald-300 group-hover:-translate-y-0.5 transition-all duration-300">
                         {skill.name}
                       </span>
                     </div>
