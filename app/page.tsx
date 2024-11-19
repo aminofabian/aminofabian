@@ -78,7 +78,7 @@ export default function HomePage(): JSX.Element {
           }} />
 
           {/* Hexagonal pattern */}
-          <div className="absolute inset-0 opacity-[0.12] dark:opacity-[0.15]" style={{
+          <div className="absolute inset-0 opacity-[0.12] dark:opacity-[0.7] rounded-3xl" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' stroke-width='3' stroke='%2310B981' fill='none' opacity='.3'/%3E%3C/svg%3E")`,
             backgroundSize: '80px 80px'
           }} />
@@ -173,7 +173,7 @@ export default function HomePage(): JSX.Element {
         </Suspense>
         
         {/* Main content */}
-        <div className="relative space-y-4 md:space-y-8">
+        <div className="relative space-y-4 md:space-y-8 rounded-3xl">
           {/* Home section with Logo */}
           <section id="home" className="min-h-screen flex flex-col justify-center items-center transition-all duration-500 ease-out">
             <div className="container mx-auto px-4 space-y-4 animate-fade-in">
