@@ -84,33 +84,33 @@ export default function HomePage(): JSX.Element {
           }} />
 
           {/* Diagonal pattern */}
-          <div className="absolute inset-0 opacity-[0.08] dark:opacity-[0.12]" style={{
+          {/* <div className="absolute inset-0 opacity-[0.08] dark:opacity-[0.12]" style={{
             backgroundImage: `
               linear-gradient(45deg, var(--pattern-color) 25%, transparent 25%),
               linear-gradient(-45deg, var(--pattern-color) 25%, transparent 25%)
             `,
             backgroundSize: '80px 80px',
             backgroundPosition: '0 0, 40px 0'
-          }} />
+          }} /> */}
 
           {/* Dotted overlay */}
-          <div className="absolute inset-0 opacity-[0.08] dark:opacity-[0.1]" style={{
+          {/* <div className="absolute inset-0 opacity-[0.08] dark:opacity-[0.1]" style={{
             backgroundImage: `
               radial-gradient(var(--pattern-color) 2.5px, transparent 2.5px),
               radial-gradient(var(--pattern-color) 2.5px, transparent 2.5px)
             `,
             backgroundSize: '40px 40px',
             backgroundPosition: '0 0, 20px 20px'
-          }} />
+          }} /> */}
 
           {/* Ambient glow */}
           <div className="absolute inset-0">
             {/* Top right glow */}
-            <div className="absolute -top-24 -right-24 w-[600px] h-[600px] bg-primary/15 dark:bg-primary/10 rounded-full blur-3xl" />
+            {/* <div className="absolute -top-24 -right-24 w-[600px] h-[600px] bg-primary/15 dark:bg-primary/10 rounded-full blur-3xl" /> */}
             {/* Bottom left glow */}
-            <div className="absolute -bottom-24 -left-24 w-[600px] h-[600px] bg-primary/15 dark:bg-primary/10 rounded-full blur-3xl" />
+            {/* <div className="absolute -bottom-24 -left-24 w-[600px] h-[600px] bg-primary/15 dark:bg-primary/10 rounded-full blur-3xl" /> */}
             {/* Center glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 dark:bg-primary/5 rounded-full blur-3xl" />
+            {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 dark:bg-primary/5 rounded-full blur-3xl" /> */}
           </div>
         </div>
       </div>
