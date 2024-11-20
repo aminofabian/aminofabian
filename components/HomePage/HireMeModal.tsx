@@ -91,7 +91,7 @@ const HireMeModal = ({ isOpen, onClose }: HireMeModalProps) => {
                       <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
                       <span className="relative flex items-center justify-center gap-2">
                         <Phone className="w-5 h-5" />
-                        Chat on WhatsApp
+                        Chat me on WhatsApp
                       </span>
                     </motion.a>
 
@@ -109,7 +109,7 @@ const HireMeModal = ({ isOpen, onClose }: HireMeModalProps) => {
                       <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
                       <span className="relative flex items-center justify-center gap-2">
                         <Mail className="w-5 h-5" />
-                        Send me a message
+                        Send me an Email
                       </span>
                     </motion.a>
                   </div>
