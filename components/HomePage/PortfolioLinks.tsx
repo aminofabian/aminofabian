@@ -259,8 +259,7 @@ const PortfolioLinks = () => {
                         transition={{ duration: 0.8 }}
                         className="absolute inset-0 flex items-center text-gray-600 dark:text-gray-300"
                       >
-                        Lemme think...
-                      </motion.div>
+Let me think...                      </motion.div>
                       <motion.div
                         initial={{ display: "block", opacity: 0 }}
                         animate={{ 
@@ -270,8 +269,7 @@ const PortfolioLinks = () => {
                         transition={{ duration: 2.0 }}
                         className="absolute inset-0 flex items-center text-gray-600 dark:text-gray-300"
                       >
-                        ...of any disappointed client...
-                      </motion.div>
+disappointed clients?                      </motion.div>
                       <motion.div
                         initial={{ display: "block", opacity: 0 }}
                         animate={{ 
@@ -291,7 +289,7 @@ const PortfolioLinks = () => {
                             duration: 1
                           }}
                         >
-                          Oops, zero! 😊
+                          Oops, none !!! 😊
                         </motion.span>
                       </motion.div>
                     </div>
