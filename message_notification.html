@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Contact Form Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .notification {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            color: #047857;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #047857;
+            padding-bottom: 10px;
+        }
+        .field {
+            margin-bottom: 15px;
+        }
+        .field-label {
+            color: #4a5568;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .field-value {
+            color: #1a202c;
+            background-color: #f8fafc;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+        }
+        .message-content {
+            white-space: pre-wrap;
+        }
+        .footer {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+            color: #718096;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="notification">
+        <h2 class="header">New Contact Form Message</h2>
+        
+        <div class="field">
+            <div class="field-label">From:</div>
+            <div class="field-value">${user_name}</div>
+        </div>
+        
+        <div class="field">
+            <div class="field-label">Email:</div>
+            <div class="field-value">${user_email}</div>
+        </div>
+        
+        <div class="field">
+            <div class="field-label">Message:</div>
+            <div class="field-value message-content">${message}</div>
+        </div>
+        
+        <div class="footer">
+            <p>This message was sent through your website's contact form.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -2,7 +2,6 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { useInView } from 'framer-motion';
-import emailjs from '@emailjs/browser';
 import { getRandomMessage, getRandomSuccessMessage } from './CaptchaMessages';
 import ContactForm from './ContactForm';
 
@@ -23,7 +22,6 @@ const IDEContactForm = ({ onClose }: IdeContactFormProps) => {
 
 
   useEffect(() => {
-    emailjs.init("nb8hu7naiVneNR8KU");
     generateCaptcha();
   }, []);
 
@@ -78,20 +76,25 @@ const IDEContactForm = ({ onClose }: IdeContactFormProps) => {
     try {
       setIsSubmitting(true);
       const formData = new FormData(formRef.current);
-      console.log('Form Data:', {
+      const data = {
         user_name: formData.get('user_name'),
         user_email: formData.get('user_email'),
         message: formData.get('message')
+      };
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
       });
 
-      const response = await emailjs.sendForm(
-        'service_6pl0jns',
-        'template_exhg1ep',
-        formRef.current,
-        'nb8hu7naiVneNR8KU'
-      );
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
       
-      console.log('EmailJS Response:', response);
+      console.log('Email sent successfully');
       setSubmitStatus('success');
       formRef.current.reset();
       setCaptchaAnswer('');

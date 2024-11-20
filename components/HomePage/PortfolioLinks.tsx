@@ -269,7 +269,7 @@ Let me think...                      </motion.div>
                         transition={{ duration: 2.0 }}
                         className="absolute inset-0 flex items-center text-gray-600 dark:text-gray-300"
                       >
-disappointed clients?                      </motion.div>
+disappointed clients???                      </motion.div>
                       <motion.div
                         initial={{ display: "block", opacity: 0 }}
                         animate={{ 
