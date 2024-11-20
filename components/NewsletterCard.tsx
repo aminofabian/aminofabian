@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, X, Send, CheckCircle } from 'lucide-react';
+import { Sparkles, X, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 const NewsletterCard = () => {
   const [isVisible, setIsVisible] = useState(() => {
@@ -16,6 +16,7 @@ const NewsletterCard = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleClose = useCallback(() => {
     setIsClosing(true);
@@ -30,17 +31,32 @@ const NewsletterCard = () => {
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError(null);
     
     try {
-      // TODO: Implement your newsletter subscription logic here
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated API call
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to subscribe');
+      }
+
       setIsSubmitted(true);
+      setEmail('');
     } catch (error) {
       console.error('Newsletter subscription failed:', error);
+      setError(error instanceof Error ? error.message : 'Failed to subscribe');
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [email]);
 
   if (!isVisible) return null;
 
@@ -83,6 +99,14 @@ const NewsletterCard = () => {
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
                     Get weekly insights on web development, creative coding, and tech innovations.
                   </p>
+
+                  {/* Error message */}
+                  {error && (
+                    <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg flex items-start gap-2">
+                      <AlertCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                      <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+                    </div>
+                  )}
 
                   {/* Form */}
                   <form onSubmit={handleSubmit} className="space-y-3">
