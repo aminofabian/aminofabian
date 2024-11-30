@@ -1,123 +1,112 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import './NeonCursor.css';
 
 const NeonCursor: React.FC = () => {
-     const [position, setPosition] = useState({ x: 0, y: 0, scale: 1, opacity: 1 });
-     const [isClicking, setIsClicking] = useState(false);
-     const [isHovering, setIsHovering] = useState(false);
-     const trailControls = useAnimation();
-     const glowControls = useAnimation();
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [isHovering, setIsHovering] = useState(false);
+    const [isClicking, setIsClicking] = useState(false);
+    const trailsRef = useRef<(HTMLDivElement | null)[]>([]);
+    const requestRef = useRef<number>();
+    const previousTimeRef = useRef<number>();
+    const trailPositions = useRef<{ x: number; y: number }[]>(Array(5).fill({ x: 0, y: 0 }));
 
-     const handleMouseMove = useCallback((e: MouseEvent) => {
-          setPosition(prev => ({
-               ...prev,
-               x: e.clientX,
-               y: e.clientY,
-          }));
-     }, []);
+    const animate = useCallback((time: number) => {
+        if (previousTimeRef.current !== undefined) {
+            trailPositions.current = trailPositions.current.map((pos, index) => {
+                const targetPos = index === 0 ? position : trailPositions.current[index - 1];
+                return {
+                    x: pos.x + (targetPos.x - pos.x) * 0.2,
+                    y: pos.y + (targetPos.y - pos.y) * 0.2
+                };
+            });
 
-     const handleMouseDown = () => setIsClicking(true);
-     const handleMouseUp = () => setIsClicking(false);
+            trailsRef.current.forEach((trail, index) => {
+                if (trail) {
+                    const pos = trailPositions.current[index];
+                    const scale = 1 - (index * 0.15);
+                    const opacity = 1 - (index * 0.2);
+                    trail.style.transform = `translate(${pos.x}px, ${pos.y}px) scale(${scale})`;
+                    trail.style.opacity = String(opacity);
+                }
+            });
+        }
+        previousTimeRef.current = time;
+        requestRef.current = requestAnimationFrame(animate);
+    }, [position]);
 
-     const handleMouseOver = useCallback((e: MouseEvent) => {
-          const target = e.target as HTMLElement;
-          if (target.matches('a, button, input, [data-hover="true"]')) {
-               setIsHovering(true);
-               void trailControls.start({
-                    scale: 1.5,
-                    borderColor: 'rgb(255, 150, 50)',
-                    borderWidth: '3px',
-               });
-               void glowControls.start({
-                    scale: 2,
-                    opacity: 0.8,
-               });
-          }
-     }, [trailControls, glowControls]);
+    useEffect(() => {
+        requestRef.current = requestAnimationFrame(animate);
+        return () => {
+            if (requestRef.current) {
+                cancelAnimationFrame(requestRef.current);
+            }
+        };
+    }, [animate]);
 
-     const handleMouseOut = useCallback(() => {
-          setIsHovering(false);
-          void trailControls.start({
-               scale: 1,
-               borderColor: 'rgb(236, 101, 23)',
-               borderWidth: '2px',
-          });
-          void glowControls.start({
-               scale: 1,
-               opacity: 0.4,
-          });
-     }, [trailControls, glowControls]);
+    const handleMouseMove = useCallback((e: MouseEvent) => {
+        setPosition({ x: e.clientX, y: e.clientY });
+    }, []);
 
-     useEffect(() => {
-          window.addEventListener('mousemove', handleMouseMove);
-          window.addEventListener('mousedown', handleMouseDown);
-          window.addEventListener('mouseup', handleMouseUp);
-          window.addEventListener('mouseover', handleMouseOver);
-          window.addEventListener('mouseout', handleMouseOut);
+    const handleMouseOver = useCallback((e: MouseEvent) => {
+        const target = e.target as HTMLElement;
+        if (target.matches('a, button, input, [role="button"], [data-hover="true"]')) {
+            setIsHovering(true);
+        }
+    }, []);
 
-          return () => {
-               window.removeEventListener('mousemove', handleMouseMove);
-               window.removeEventListener('mousedown', handleMouseDown);
-               window.removeEventListener('mouseup', handleMouseUp);
-               window.removeEventListener('mouseover', handleMouseOver);
-               window.removeEventListener('mouseout', handleMouseOut);
-          };
-     }, [handleMouseMove, handleMouseOver, handleMouseOut]);
+    const handleMouseOut = useCallback(() => {
+        setIsHovering(false);
+    }, []);
 
-     return (
-          <div className="neon-cursor-container">
-               {/* Main cursor dot */}
-               <motion.div
-                    className="cursor-main"
-                    animate={{
-                         x: position.x - 10,
-                         y: position.y - 10,
-                         scale: isClicking ? 0.8 : isHovering ? 1.2 : 1,
-                    }}
-                    transition={{
-                         type: 'spring',
-                         damping: 20,
-                         stiffness: 400,
-                         mass: 0.5,
-                    }}
-               />
+    const handleMouseDown = useCallback(() => setIsClicking(true), []);
+    const handleMouseUp = useCallback(() => setIsClicking(false), []);
 
-               {/* Trailing circle */}
-               <motion.div
-                    className="cursor-trail"
-                    animate={{
-                         x: position.x - 20,
-                         y: position.y - 20,
-                    }}
-                    transition={{
-                         type: 'spring',
-                         damping: 30,
-                         stiffness: 200,
-                         mass: 0.8,
-                    }}
-                    initial={false}
-               />
+    useEffect(() => {
+        document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('mouseover', handleMouseOver);
+        document.addEventListener('mouseout', handleMouseOut);
+        document.addEventListener('mousedown', handleMouseDown);
+        document.addEventListener('mouseup', handleMouseUp);
 
-               {/* Outer glow */}
-               <motion.div
-                    className="cursor-glow"
-                    animate={{
-                         x: position.x - 30,
-                         y: position.y - 30,
-                    }}
-                    transition={{
-                         type: 'spring',
-                         damping: 40,
-                         stiffness: 150,
-                         mass: 1,
-                    }}
-                    initial={false}
-               />
-          </div>
-     );
+        return () => {
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseover', handleMouseOver);
+            document.removeEventListener('mouseout', handleMouseOut);
+            document.removeEventListener('mousedown', handleMouseDown);
+            document.removeEventListener('mouseup', handleMouseUp);
+        };
+    }, [handleMouseMove, handleMouseOver, handleMouseOut, handleMouseDown, handleMouseUp]);
+
+    const setTrailRef = useCallback((el: HTMLDivElement | null, index: number) => {
+        trailsRef.current[index] = el;
+    }, []);
+
+    return (
+        <div className="neon-cursor-container">
+            <div
+                className={`cursor-main ${isHovering ? 'hover' : ''} ${isClicking ? 'clicking' : ''}`}
+                style={{
+                    transform: `translate(${position.x}px, ${position.y}px)`
+                }}
+            />
+            {Array(5).fill(null).map((_, index) => (
+                <div
+                    key={index}
+                    ref={(el) => setTrailRef(el, index)}
+                    className={`cursor-trail ${index === 0 ? 'active' : ''}`}
+                />
+            ))}
+            <div
+                className="cursor-glow"
+                style={{
+                    transform: `translate(${position.x - 20}px, ${position.y - 20}px)`
+                }}
+            />
+        </div>
+    );
 };
 
 export default NeonCursor;
