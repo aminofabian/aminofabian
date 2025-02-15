@@ -1,7 +1,7 @@
 <div align="center">
 
 <h1>Fabian Amino</h1>
-<h2>Full Stack Developer | Creative Technologist</h2>
+<h2>Full Stack Developer | App Developer | Creative Technologist</h2>
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-%230288f3.svg?style=for-the-badge&logo=firefox&logoColor=white)](https://aminofabian.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%23d5573c.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/fabian-amino-b6bba5253/)
