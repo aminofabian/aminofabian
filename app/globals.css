@@ -105,6 +105,22 @@
   .gradient-text {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-emerald-400;
   }
+
+  .project-card-hover {
+    @apply transition-all duration-300 hover:shadow-2xl hover:scale-[1.02];
+  }
+  
+  .project-tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .animate-slideDown {
+    animation: slideDown 0.3s ease-out;
+  }
 }
 
 .animated-gradient {
@@ -132,4 +148,53 @@
   100% {
     background-position: -200% 0;
   }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom styles for react-phone-number-input */
+.PhoneInput {
+  @apply flex items-center gap-2;
+}
+
+.PhoneInputCountry {
+  @apply flex items-center gap-1;
+}
+
+.PhoneInputCountrySelect {
+  @apply p-2 rounded-md border dark:bg-gray-700 dark:border-gray-600;
+}
+
+.PhoneInputInput {
+  @apply p-2 rounded-md border w-full dark:bg-gray-700 dark:border-gray-600;
+}
+
+.PhoneInputCountryIcon {
+  @apply w-6 h-4 overflow-hidden rounded-sm;
+}
+
+.PhoneInputInput {
+  @apply bg-transparent outline-none w-full;
+}
+
+.PhoneInputCountry {
+  @apply mr-2;
+}
+
+.PhoneInputCountrySelect {
+  @apply bg-transparent text-gray-900 dark:text-white;
 }

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { FaGithub, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 import { HiMail } from 'react-icons/hi';
+import { SiUpwork } from 'react-icons/si';
 
 interface SocialLink {
   name: string;
@@ -40,6 +41,13 @@ const socialLinks: SocialLink[] = [
     name: 'Instagram',
     icon: FaInstagram,
     href: 'https://instagram.com/aminofabian',
+    color: 'text-emerald-600',
+    hoverColor: 'hover:text-emerald-500'
+  },
+  {
+    name: 'Upwork',
+    icon: SiUpwork,
+    href: 'https://www.upwork.com/freelancers/~01fe78f7d40f11e05e',
     color: 'text-emerald-600',
     hoverColor: 'hover:text-emerald-500'
   },
