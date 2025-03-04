@@ -1,5 +1,4 @@
 <div align="center">
-
 <h1>Fabian Amino</h1>
 <h2>Full Stack Developer | App Developer | Creative Technologist</h2>
 
