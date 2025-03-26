@@ -160,9 +160,9 @@ const CodeHeroSection: React.FC = () => {
               className="flex space-x-6"
             >
               {[
-                { Icon: Github, href: "https://github.com/YOUR_GITHUB", label: "GitHub" },
-                { Icon: Linkedin, href: "https://linkedin.com/in/YOUR_LINKEDIN", label: "LinkedIn" },
-                { Icon: Instagram, href: "#", label: "Instagram" },
+                { Icon: Github, href: "https://github.com/aminofabian", label: "GitHub" },
+                { Icon: Linkedin, href: "https://linkedin.com/in/fabian-amino", label: "LinkedIn" },
+                { Icon: Instagram, href: "https://www.instagram.com/fabian_amino", label: "Instagram" },
                 { Icon: Briefcase, href: "#portfolio", label: "Portfolio" }
               ].map(({ Icon, href, label }) => (
                 <a

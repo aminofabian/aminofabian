@@ -33,14 +33,14 @@ const socialLinks: SocialLink[] = [
   {
     name: 'LinkedIn',
     icon: FaLinkedinIn,
-    href: 'https://linkedin.com/in/aminofabian',
+    href: 'https://linkedin.com/in/fabian-amino',
     color: 'text-emerald-600',
     hoverColor: 'hover:text-emerald-500'
   },
   {
     name: 'Instagram',
     icon: FaInstagram,
-    href: 'https://instagram.com/aminofabian',
+    href: 'https://instagram.com/fabian_amino',
     color: 'text-emerald-600',
     hoverColor: 'hover:text-emerald-500'
   },
