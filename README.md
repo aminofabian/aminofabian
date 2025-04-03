@@ -3,7 +3,7 @@
 <h2>Full Stack Developer | App Developer | Creative Technologist</h2>
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-%230288f3.svg?style=for-the-badge&logo=firefox&logoColor=white)](https://aminofabian.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%23d5573c.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/fabian-amino-b6bba5253/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%23d5573c.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/amino-fabian/)
 [![Twitter](https://img.shields.io/badge/Twitter-%23f39409.svg?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/amino_fabian)
 [![Blog](https://img.shields.io/badge/Medium-%236d2431.svg?style=for-the-badge&logo=medium&logoColor=white)](https://www.medium.com/@aminofabian/)
 
