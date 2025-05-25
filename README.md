@@ -13,7 +13,7 @@
 
 <h2 style="color: #059669">About Me</h2>
 
-Full Stack Developer based in Nairobi, Kenya, specializing in innovative web solutions and interactive experiences. Visit my portfolio at [aminofabian.com](https://aminofabian.com) to explore my latest projects and creative work.
+Full Stack Developer based in Nairobi, Kenya, specializing in innovative web solutions and interactive experiences. Visit my portfolio at [aminofabian.com](https://aminofabian.com) to explore my latest projects and creative work...
 
 ```python
 class Developer:
