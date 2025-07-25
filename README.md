@@ -20,7 +20,7 @@ class Developer:
     def __init__(self):
         self.name = "Fabian Amino"
         self.role = "Full Stack Developer"
-        self.location = "Nairobi, Kenya"
+        self.location = "Nairobi, Kenya..."
         self.portfolio = "https://aminofabian.com"
         self.expertise = [
             "Web Development",
