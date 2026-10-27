@@ -1,6 +1,6 @@
 <div align="center">
 <h1>Fabian Amino</h1>
-<h2>Full Stack Developer | App Developer | Creative Technologist | Cloud Architect</h2>
+<h2>Building Palmart — shop software, kiosks, and M-Pesa payments.</h2>
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-%230288f3.svg?style=for-the-badge&logo=firefox&logoColor=white)](https://aminofabian.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%23d5573c.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/fabian-amino/)
@@ -13,7 +13,9 @@
 
 <h2 style="color: #059669">About Me</h2>
 
-Full Stack Developer based in Nairobi, Kenya, specializing in innovative web solutions and interactive experiences. Visit my portfolio at [aminofabian.com](https://aminofabian.com) to explore my latest projects and creative work...
+I build the software a shop runs on. From Nairobi, that is Palmart: sales, stock, storefronts, and a desktop kiosk, with Malipo moving the M-Pesa underneath. The stack is the one the product needs — Next.js, a Java API, Elixir for payments, Tauri on the till — and the interface is part of the product. Evenings are for music, a Canon T100, and chess.
+
+Portfolio: [aminofabian.com](https://aminofabian.com)
 
 ```python
 class Developer:
@@ -28,7 +30,7 @@ class Developer:
             "3D Web Experiences",
             "Interactive Design"
         ]
-        self.current_focus = "Building immersive web experiences with Three.js"
+        self.current_focus = "Palmart and Malipo, from Nairobi"
 
     def get_tech_stack(self):
         return {
@@ -110,5 +112,5 @@ mindmap
 ---
 
 <div align="center">
-<i style="color: #676a83">Creating innovative digital experiences through code and creativity. Visit <a href="https://aminofabian.com" style="color: #0288f3">aminofabian.com</a> to learn more.</i>
+<i style="color: #676a83">Building Palmart from Nairobi. Music, a Canon, and chess after hours. <a href="https://aminofabian.com" style="color: #0288f3">aminofabian.com</a></i>
 </div>
